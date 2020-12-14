@@ -9,37 +9,39 @@ import java.util.Random;
 public class MusicGenerator {
 	int mode=0;
 	int interval;
-	double numberAssigned;
-	double[]sequence;
-	int note = 0; 
-	void playMusic(Vector<Double> numbers) {
+	public float numberAssigned;
+	public Vector<Float>sequence=new Vector<Float>();
+	public void playMusic(Vector<Float> numbers) {
 		Random rand= new Random();
+		sequence= new Vector<Float>(numbers.size());
 		if(mode == 0) {//play arpeg numbers
-			double[] sequence = new double[numbers.size()]; 
 			for(int i = 0; i<numbers.size();i++) {
-				sequence[i] = sequence[i]*110.0;
+				sequence.add(numbers.get(i)*110.0f);
 			}
 			
 		}
 		if(mode == 1) {//play note exp frequency number
-			double[] sequence= new double[rand.nextInt(129)];
-			for(int i = 0; i<sequence.length;i++) {
-				double c = rand.nextDouble()*(46.3/numberAssigned);
-				sequence[i] =Math.pow(c, numberAssigned);
+			int f = rand.nextInt(128)+1;
+			sequence= new Vector<Float>(f);
+			for(int i = 0; i<f;i++) {
+				float c = rand.nextFloat()*(110f/numberAssigned);
+				sequence.add((float) Math.pow(c, numberAssigned));
 			}	
 		}
 		if(mode == 2) {//play note multiplicative scale number
-			double[] sequence= new double[rand.nextInt(129)];
-			for(int i = 0; i<sequence.length;i++) {
-				double c = rand.nextDouble()*(24100/numberAssigned);
-				sequence[i] =c*numberAssigned;
+			int f = rand.nextInt(128)+1;
+			sequence= new Vector<Float>(f);
+			for(int i = 0; i<f;i++) {
+				float c = rand.nextFloat()*((float)8500.0f/numberAssigned);
+				sequence.add((float)c);
 			}	
 		}
 		if(mode == 3) {//play note randoms number
-			double[] sequence= new double[rand.nextInt(129)];
-			for(int i = 0; i<sequence.length;i++) {
-				double c = rand.nextDouble()*24100;
-				sequence[i] =c;
+			int f= rand.nextInt(128)+1;
+			sequence= new Vector<Float>(f);
+			for(int i = 0; i<f;i++) {
+				float c = rand.nextFloat()*12000f;
+				sequence.add(c);
 			}	
 		}
 	}

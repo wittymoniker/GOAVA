@@ -10,109 +10,182 @@ import java.io.Reader;
 
 
 public class UI_Main extends PApplet{
-	Vector<Double> numbers=new Vector<Double>();
+	Vector<Float> numbers=new Vector<Float>();
 	public static void main(String[] args) {
 		PApplet.main("UI_Main");
 	}
 	Interpreter interpreter = new Interpreter();
 	public void init() {
 		Scanner reader = new Scanner(System.in);  // Reading from System.in
-		System.out.println("Enter how many numbers you wish to include: ");
+		print("Enter how many numbers you wish to include: ");
 		int n = reader.nextInt(); // Scans the next token of the input as an int.
 		//once finished
 		
 		for(int i=0; i<n; i++) {
-			System.out.println("Enter a number for up to "+(i+1)+"/"+n+": ");
-			double x  = reader.nextDouble(); // Scans the next token of the input as an int.
+			print("Enter a number for up to "+(i+1)+"/"+n+": ");
+			Float x  = reader.nextFloat(); // Scans the next token of the input as an int.
 			//once finished
 			numbers.add(x);
 		}
 		for(int i=0; i<n; i++) {
-			System.out.println(numbers.get(i));
+			print(numbers.get(i));
 		}
 		
 		interpreter.interpret(numbers);
 		for(int i = 0; i<numbers.size();i++) {
 			//Interpreter.objects.get(i).draw(numbers);
 			interpreter.instruments.get(i).playMusic(numbers);
-		    //triOscs[i].amp((float)1/(float)numbers.size());
-		    //triOscs[i].freq((float) Interpreter.instruments.get(i).sequence[0]);
+		    //SinOscs[i].amp((float)1/(float)numbers.size());
+		    //SinOscs[i].freq((float) Interpreter.instruments.get(i).sequence[0]);
 		}
 		reader.close();
 	}
 	public void settings(){
 		size(2046,1024);
+		
 	}
 	public void setup() {
 		init();
-		
-		
 	}
-	int note=0;
+	public Vector<Integer> note = new Vector<Integer>(numbers.size());
+	public Vector<SinOsc> SinOscs = new Vector<SinOsc>(numbers.size());
+	
+	boolean done;
 	public void draw(){
 		Random rand= new Random();
-		int duration = (int) (3500 * rand.nextDouble());
+		int duration = (int) (1000 * rand.nextFloat());
 
 		// This variable stores the point in time when the next note should be triggered
 		int trigger = millis(); 
 		/*
 		
 		Scanner reader = new Scanner(System.in);  // Reading from System.in
-		System.out.println("Enter how many seconds this clip should be: ");
+		print("Enter how many seconds this clip should be: ");
 		int n = reader.nextInt(); // Scans the next token of the input as an int.*/
-		boolean done=false;
 		
 		while(!done) {
-			background(0);
-			for(int i = 0; i<numbers.size();i++) {
-				interpreter.objects.get(i).draw(numbers);
-				//Interpreter.instruments.get(i).playMusic(numbers);
-				TriOsc[]triOscs= new TriOsc[numbers.size()];
-				for(int b = 0; b<numbers.size();b++) {
-					//Interpreter.objects.get(i).draw(numbers);
-					interpreter.instruments.get(b).playMusic(numbers);
-					
-					triOscs[b]= new TriOsc(this);
-				}
-				if(interpreter.instruments.get(i).sequence != null) {
-					if ((millis() > trigger) && (note<interpreter.instruments.get(i).sequence.length)) {
-
-					    // midiToFreq transforms the MIDI value into a frequency in Hz which we use to
-					    // control the triangle oscillator with an amplitute of 0.5
-						
-
-					    // Create the new trigger according to predefined duration
-					    trigger = millis() + duration;
-					    triOscs[i].amp((float)1/numbers.size());
-					    System.out.println(interpreter.instruments.get(i).sequence[note]);
-					    triOscs[i].freq((float) interpreter.instruments.get(i).sequence[note]);
-					    triOscs[i].play((float) interpreter.instruments.get(i).sequence[note],(float)1/numbers.size());
-					    
-					    // Advance by one note in the midiSequence;
-					    note++; 
-
-					    // Loop the sequence, notice the jitter
-					    if (note == interpreter.instruments.get(i).sequence.length) {
-					      note = 0;
-					    }
-					  }
-				}
+			frame.setLocation(1024, 512);
+			
+			for(int b = 0; b<numbers.size();b++) {
+				//Interpreter.objects.get(i).draw(numbers);
 				
+				interpreter.instruments.get(b).playMusic(numbers);
+				
+				SinOscs.add(new SinOsc(this));
+				SinOscs.get(b).play();
+				
+				for(int i = 0; i<numbers.size();i++) {
+					note.add(0);
+				}
+			}
+			done=true;
+		}
+		
+		
+		
+		background(0);
+			for(int i = 0; i<numbers.size();i++) {
+				
+			
+				if(interpreter.instruments.get(i).sequence != null) {
+					int j =rand.nextInt(6);
+					interpreter.objects.get(i).shape = createShape();
+					pushMatrix();
+					if(j==1) {
+						translate(interpreter.instruments.get(i).sequence.get(note.get(i).intValue() )/20,note.get(i).intValue()*20);
+						rotate((float)-1/(numbers.get(i)));
+					}
+					if(j==2){
+						translate(note.get(i).intValue()*20,interpreter.instruments.get(i).sequence.get(note.get(i).intValue() )/20);
+						rotate((float)-1/(numbers.get(i)));
+					}
+					if(j==3) {
+						translate(-interpreter.instruments.get(i).sequence.get(note.get(i).intValue())/20,note.get(i).intValue()*20);
+						rotate((float)-1/(numbers.get(i)));
+					}
+					if(j==0){
+						translate(note.get(i).intValue()*20,-interpreter.instruments.get(i).sequence.get(note.get(i).intValue() )/20);
+						rotate((float)1/(numbers.get(i)));
+					}
+					if(j==3) {
+						translate(interpreter.instruments.get(i).sequence.get(note.get(i).intValue() )/20,-note.get(i).intValue()/20);
+						rotate((float)-1/(numbers.get(i)));
+					}
+					if(j==0){
+						translate(-note.get(i).intValue()*20,interpreter.instruments.get(i).sequence.get(note.get(i).intValue() )/20);
+						rotate((float)1/(numbers.get(i)));
+					}
+					if(j==5){
+						translate(-note.get(i).intValue()*20,-interpreter.instruments.get(i).sequence.get(note.get(i).intValue() )/20);
+						rotate((float)1/(numbers.get(i)));
+					}
+					interpreter.objects.get(i).draw(numbers);
+					
+					popMatrix();
+					interpreter.objects.get(i).shape.endShape(CLOSE);
+					 shape(interpreter.objects.get(i).shape);
+					 
+					//Interpreter.instruments.get(i).playMusic(numbers);
+					
+					//print((interpreter.instruments.get(i)).sequence.get(note.get(i).intValue()));
+				 if ((millis() > trigger) && (note.get(i).intValue() <interpreter.instruments.get(i).sequence.size())) {
+
+				    // midiToFreq transforms the MIDI value into a frequency in Hz which we use to
+				    // control the triangle oscillator with an amplitute of 0.5
+					
+
+				    // Create the new trigger according to predefined duration
+					float noteFreq= interpreter.instruments.get(i).sequence.get(note.get(i).intValue() );
+				    trigger = millis() + duration;
+				    SinOscs.get(i).amp((float)1/numbers.size());
+				    print(interpreter.instruments.get(i).sequence.get(note.get(i).intValue() ));
+				    SinOscs.get(i).freq(noteFreq);
+				    SinOscs.get(i).play(noteFreq,(float)1/numbers.size());
+				    
+				    // Advance by one note in the midiSequence;
+				    note.set(i,note.get(i).intValue()+1); 
+
+				    // Loop the sequence, notice the jitter
+		    		 if (note.get(i).intValue() ==(interpreter.instruments.get(i).sequence.size())) {
+		    			 note.set(i,0);
+		    		 }
+			    }
 			}
 		}
-		/*System.out.println("Do you like this media presentation? (y/n): ");
-		String text = reader.nextLine(); // Scans the next token of the input as an int.
-		if(text == "y") {
-			done=true;
-		}else {
-			done=false;
-		}		*/
-		
-		//reader.close();
-		
-		
 	}
-	
-	
-	
 }
+
+/*if(interpreter.instruments.get(i).mode == 0) {//draw all numbers complex
+						  
+						 for(int b = 0; b<numbers.size();b++) {
+							 interpreter.objects.get(i).shape.vertex(250*numbers.get(b),0-interpreter.instruments.get(b).sequence.get(note.get(b).intValue() )/20);
+							 interpreter.objects.get(i).shape.vertex(0+interpreter.instruments.get(b).sequence.get(note.get(b).intValue() )/20,250*numbers.get(b));
+							 interpreter.objects.get(i).shape.vertex(250*numbers.get(b),0-interpreter.instruments.get(b).sequence.get(note.get(b).intValue() )/20);
+						 }
+						 
+						  
+					}
+					if(interpreter.instruments.get(i).mode == 1) {//draw number shape ceil verts
+						for(int b = 0; b<(int)Math.ceil((double)interpreter.objects.get(i).numberAssigned);b++) {
+							interpreter.objects.get(i).shape.vertex((float)Math.asin(((b+1.0f)/interpreter.objects.get(i).numberAssigned)*300),(float)Math.acos(((b+1.0f)/interpreter.objects.get(i).numberAssigned)*300));
+							 
+						 }
+					}
+					if(interpreter.instruments.get(i).mode == 2) {//draw number shape floor verts
+						for(int b = 0; b<(int)Math.floor((double)interpreter.objects.get(i).numberAssigned);b++) {
+							interpreter.objects.get(i).shape.vertex((float)Math.asin(((b+1.0f)/interpreter.objects.get(i).numberAssigned)*300),(float)Math.acos(((b+1.0f)/interpreter.objects.get(i).numberAssigned)*300));
+							 
+						 }
+					}
+					if(interpreter.instruments.get(i).mode == 3) {//draw all numbers randomize
+						for(int b = 0; b<numbers.size();b++) {
+							
+							interpreter.objects.get(i).shape.vertex(rand.nextInt(150)*numbers.get(b),rand.nextInt(150)*numbers.get(b));
+							interpreter.objects.get(i).shape.vertex(0,rand.nextInt(150)*numbers.get(b));
+							interpreter.objects.get(i).shape.vertex(rand.nextInt(150)*numbers.get(b),0);
+						 }
+						 
+					}
+					*/
+		
+		
