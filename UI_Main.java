@@ -51,9 +51,11 @@ public class UI_Main extends PApplet{
 	public Vector<SinOsc> SinOscs = new Vector<SinOsc>(numbers.size());
 	
 	boolean done;
+	Random rand= new Random();
+	int duration = (int) (3000.0f+ 3000.0f* rand.nextFloat());
 	public void draw(){
-		Random rand= new Random();
-		int duration = (int) (3000.0f+ 3000.0f* rand.nextFloat());
+		
+		
 		/*
 		
 
@@ -138,6 +140,7 @@ public class UI_Main extends PApplet{
 		 					note.set(z,0);
 		 				}
 		    			 interpreter.instruments.get(i).playMusic(numbers);
+		    			 int duration = (int) (3000.0f+ 3000.0f* rand.nextFloat());
 		    		 }
 			    }
 			}
