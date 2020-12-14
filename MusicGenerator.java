@@ -23,11 +23,11 @@ public class MusicGenerator {
 			
 			
 		}
-		if(mode == 1) {//play note exp frequency number
+		if(mode == 1) {//play note exp low frequency number
 			int f = 64+rand.nextInt(128)+1;
 			sequence= new Vector<Float>(f);
 			for(int i = 0; i<f;i++) {
-				float c = rand.nextFloat()*(110f/numberAssigned);
+				float c = numbers.get((rand.nextInt(numbers.size())+1))*(55f/numberAssigned);
 				sequence.add((float) Math.pow(c, numberAssigned));
 			}	
 		}
@@ -35,7 +35,7 @@ public class MusicGenerator {
 			int f = 64+rand.nextInt(128)+1;
 			sequence= new Vector<Float>(f);
 			for(int i = 0; i<f;i++) {
-				float c = rand.nextFloat()*((float)8500.0f/numberAssigned);
+				float c = numbers.get((rand.nextInt(numbers.size())+1))*((float)8500.0f/numberAssigned);
 				sequence.add((float)c);
 			}	
 		}
@@ -43,10 +43,18 @@ public class MusicGenerator {
 			int f= 64+rand.nextInt(128)+1;
 			sequence= new Vector<Float>(f);
 			for(int i = 0; i<f;i++) {
-				float c = rand.nextFloat()*12000f;
+				float c = numbers.get((rand.nextInt(numbers.size())+1))*110.0f;
 				sequence.add(c);
 			}	
 		}
-		mode = rand.nextInt(4);
+		if(mode == 4) {//play note exp low frequency number(more likely)
+			int f = 64+rand.nextInt(128)+1;
+			sequence= new Vector<Float>(f);
+			for(int i = 0; i<f;i++) {
+				float c = numbers.get((rand.nextInt(numbers.size())+1))*(55f/numberAssigned);
+				sequence.add((float) Math.pow(c, numberAssigned));
+			}	
+		}
+		mode = rand.nextInt(5);
 	}
 }
