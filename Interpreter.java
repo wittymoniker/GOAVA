@@ -28,11 +28,11 @@ public class Interpreter {
 		
 		Random rand = new Random();
 		for(int i = 0; i<numbers.size(); i++) {
-			objects.add(new GeometricObject_2d());
+			objects.add(i,new GeometricObject_2d());
 			objects.get(i).numberAssigned = numbers.get(i);
 			objects.get(i).mode = rand.nextInt(4);
 			objects.get(i).interval = rand.nextInt(129);
-			instruments.add(new MusicGenerator());
+			instruments.add(i,new MusicGenerator());
 			instruments.get(i).numberAssigned = numbers.get(i);
 			instruments.get(i).mode = rand.nextInt(4);
 			instruments.get(i).interval = rand.nextInt(129);

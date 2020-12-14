@@ -13,15 +13,18 @@ public class MusicGenerator {
 	public Vector<Float>sequence=new Vector<Float>();
 	public void playMusic(Vector<Float> numbers) {
 		Random rand= new Random();
-		sequence= new Vector<Float>(numbers.size());
+		sequence= new Vector<Float>(128);
 		if(mode == 0) {//play arpeg numbers
-			for(int i = 0; i<numbers.size();i++) {
-				sequence.add(numbers.get(i)*110.0f);
+			for (int j= 0; j<128/numbers.size();j++){
+				for(int i = 0; i<numbers.size();i++) {
+					sequence.add(numbers.get(i)*110.0f);
+				}
 			}
+			
 			
 		}
 		if(mode == 1) {//play note exp frequency number
-			int f = rand.nextInt(128)+1;
+			int f = 64+rand.nextInt(128)+1;
 			sequence= new Vector<Float>(f);
 			for(int i = 0; i<f;i++) {
 				float c = rand.nextFloat()*(110f/numberAssigned);
@@ -29,7 +32,7 @@ public class MusicGenerator {
 			}	
 		}
 		if(mode == 2) {//play note multiplicative scale number
-			int f = rand.nextInt(128)+1;
+			int f = 64+rand.nextInt(128)+1;
 			sequence= new Vector<Float>(f);
 			for(int i = 0; i<f;i++) {
 				float c = rand.nextFloat()*((float)8500.0f/numberAssigned);
@@ -37,12 +40,13 @@ public class MusicGenerator {
 			}	
 		}
 		if(mode == 3) {//play note randoms number
-			int f= rand.nextInt(128)+1;
+			int f= 64+rand.nextInt(128)+1;
 			sequence= new Vector<Float>(f);
 			for(int i = 0; i<f;i++) {
 				float c = rand.nextFloat()*12000f;
 				sequence.add(c);
 			}	
 		}
+		mode = rand.nextInt(4);
 	}
 }

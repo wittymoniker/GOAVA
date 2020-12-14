@@ -53,18 +53,18 @@ public class UI_Main extends PApplet{
 	boolean done;
 	public void draw(){
 		Random rand= new Random();
-		int duration = (int) (1000 * rand.nextFloat());
+		int duration = (int) (3000.0f+ 3000.0f* rand.nextFloat());
+		/*
+		
 
 		// This variable stores the point in time when the next note should be triggered
 		int trigger = millis(); 
-		/*
-		
 		Scanner reader = new Scanner(System.in);  // Reading from System.in
 		print("Enter how many seconds this clip should be: ");
 		int n = reader.nextInt(); // Scans the next token of the input as an int.*/
 		
 		while(!done) {
-			frame.setLocation(1024, 512);
+			//frame.setLocation(1024, 512);
 			
 			for(int b = 0; b<numbers.size();b++) {
 				//Interpreter.objects.get(i).draw(numbers);
@@ -73,7 +73,6 @@ public class UI_Main extends PApplet{
 				
 				SinOscs.add(new SinOsc(this));
 				SinOscs.get(b).play();
-				
 				for(int i = 0; i<numbers.size();i++) {
 					note.add(0);
 				}
@@ -85,46 +84,34 @@ public class UI_Main extends PApplet{
 		
 		background(0);
 			for(int i = 0; i<numbers.size();i++) {
-				
-			
 				if(interpreter.instruments.get(i).sequence != null) {
-					int j =rand.nextInt(6);
-					interpreter.objects.get(i).shape = createShape();
+
+					// This variable stores the point in time when the next note should be triggered
+					int trigger = millis(); 
+					int j =rand.nextInt(4);
 					pushMatrix();
+					interpreter.objects.get(i).shape = createShape();
+					translate(512,768);
 					if(j==1) {
-						translate(interpreter.instruments.get(i).sequence.get(note.get(i).intValue() )/20,note.get(i).intValue()*20);
-						rotate((float)-1/(numbers.get(i)));
+						translate(rand.nextFloat()*interpreter.instruments.get(i).sequence.get(note.get(i).intValue() )/100,-note.get(i).intValue()*24*rand.nextFloat());
+						rotate((float)-1.0/(numbers.get(i)));
 					}
 					if(j==2){
-						translate(note.get(i).intValue()*20,interpreter.instruments.get(i).sequence.get(note.get(i).intValue() )/20);
-						rotate((float)-1/(numbers.get(i)));
+						translate(note.get(i).intValue()*24*rand.nextFloat(),-rand.nextFloat()*interpreter.instruments.get(i).sequence.get(note.get(i).intValue())/100);
+						rotate((float)-1.0/(numbers.get(i)));
 					}
 					if(j==3) {
-						translate(-interpreter.instruments.get(i).sequence.get(note.get(i).intValue())/20,note.get(i).intValue()*20);
-						rotate((float)-1/(numbers.get(i)));
+						translate(rand.nextFloat()*interpreter.instruments.get(i).sequence.get(note.get(i).intValue())/100,-note.get(i).intValue()*24*rand.nextFloat());
+						rotate((float)-1.0/(numbers.get(i)));
 					}
 					if(j==0){
-						translate(note.get(i).intValue()*20,-interpreter.instruments.get(i).sequence.get(note.get(i).intValue() )/20);
-						rotate((float)1/(numbers.get(i)));
-					}
-					if(j==3) {
-						translate(interpreter.instruments.get(i).sequence.get(note.get(i).intValue() )/20,-note.get(i).intValue()/20);
-						rotate((float)-1/(numbers.get(i)));
-					}
-					if(j==0){
-						translate(-note.get(i).intValue()*20,interpreter.instruments.get(i).sequence.get(note.get(i).intValue() )/20);
-						rotate((float)1/(numbers.get(i)));
-					}
-					if(j==5){
-						translate(-note.get(i).intValue()*20,-interpreter.instruments.get(i).sequence.get(note.get(i).intValue() )/20);
-						rotate((float)1/(numbers.get(i)));
+						translate(note.get(i).intValue()*24*rand.nextFloat(),-rand.nextFloat()*interpreter.instruments.get(i).sequence.get(note.get(i).intValue() )/100);
+						rotate((float)1.0/(numbers.get(i)));
 					}
 					interpreter.objects.get(i).draw(numbers);
-					
-					popMatrix();
 					interpreter.objects.get(i).shape.endShape(CLOSE);
 					 shape(interpreter.objects.get(i).shape);
-					 
+					 popMatrix();
 					//Interpreter.instruments.get(i).playMusic(numbers);
 					
 					//print((interpreter.instruments.get(i)).sequence.get(note.get(i).intValue()));
@@ -147,7 +134,10 @@ public class UI_Main extends PApplet{
 
 				    // Loop the sequence, notice the jitter
 		    		 if (note.get(i).intValue() ==(interpreter.instruments.get(i).sequence.size())) {
-		    			 note.set(i,0);
+		    			for(int z = 0; z<numbers.size();z++) {
+		 					note.set(z,0);
+		 				}
+		    			 interpreter.instruments.get(i).playMusic(numbers);
 		    		 }
 			    }
 			}
