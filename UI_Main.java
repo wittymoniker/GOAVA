@@ -52,7 +52,7 @@ public class UI_Main extends PApplet{
 	
 	boolean done;
 	Random rand= new Random();
-	int duration = (int) (3000.0f+ 3000.0f* rand.nextFloat());
+	int duration = (int) (10000.0f+ 10000.0f* rand.nextFloat());
 	public void draw(){
 		
 		
@@ -140,7 +140,7 @@ public class UI_Main extends PApplet{
 		 					note.set(z,0);
 		 				}
 		    			 interpreter.instruments.get(i).playMusic(numbers);
-		    			 int duration = (int) (3000.0f+ 3000.0f* rand.nextFloat());
+		    			 int duration = (int) (10000.0f+ 10000.0f* rand.nextFloat());
 		    		 }
 			    }
 			}
