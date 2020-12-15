@@ -6,11 +6,11 @@ import java.util.Random;
 
 
 public class Interpreter {
-	public Vector<GeometricObject_2d> objects = new Vector<GeometricObject_2d>();
+	public Vector<GeometricObject> objects = new Vector<GeometricObject>();
 	public Vector<MusicGenerator> instruments = new Vector<MusicGenerator>();
 	public void interpret(Vector<Float> numbers) {
 		instruments = new Vector<MusicGenerator>(numbers.size());
-		objects = new Vector<GeometricObject_2d>(numbers.size());
+		objects = new Vector<GeometricObject>(numbers.size());
 		Vector<Double> relevantNums = new Vector<Double>();
 		Vector<Double> ascNums = new Vector<Double>();
 		Vector<Double> descNums = new Vector<Double>();
@@ -28,14 +28,18 @@ public class Interpreter {
 		
 		Random rand = new Random();
 		for(int i = 0; i<numbers.size(); i++) {
-			objects.add(i,new GeometricObject_2d());
+			objects.add(i,new GeometricObject());
 			objects.get(i).numberAssigned = numbers.get(i);
-			objects.get(i).mode = rand.nextInt(4);
-			objects.get(i).interval = rand.nextInt(129);
+			objects.get(i).mode = rand.nextInt(8);
+			objects.get(i).interval = numbers.get(rand.nextInt(numbers.size()));
 			instruments.add(i,new MusicGenerator());
 			instruments.get(i).numberAssigned = numbers.get(i);
-			instruments.get(i).mode = rand.nextInt(5);
-			instruments.get(i).interval = rand.nextInt(129);
+			instruments.get(i).mode = rand.nextInt(9);
+			instruments.get(i).interval = 1.0f+((1.0f/(((Math.abs(((((((numbers.get(i))))))))))+1.0f)));
+			if(rand.nextInt(2)==1) {
+				instruments.get(i).interval = 1.0f-((1.0f/(((Math.abs(((((((numbers.get(i))))))))))+1.0f)));
+			}
+			instruments.get(i).playMusic(numbers);
 		}
 	}
 }
