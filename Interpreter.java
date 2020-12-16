@@ -34,7 +34,7 @@ public class Interpreter {
 			objects.get(i).interval = numbers.get(rand.nextInt(numbers.size()));
 			instruments.add(i,new MusicGenerator());
 			instruments.get(i).numberAssigned = numbers.get(i);
-			instruments.get(i).mode = rand.nextInt(9);
+			instruments.get(i).mode = rand.nextInt(18);
 			instruments.get(i).interval = 1.0f+((1.0f/(((Math.abs(((((((numbers.get(i))))))))))+1.0f)));
 			if(rand.nextInt(2)==1) {
 				instruments.get(i).interval = 1.0f-((1.0f/(((Math.abs(((((((numbers.get(i))))))))))+1.0f)));
