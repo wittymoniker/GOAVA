@@ -51,7 +51,7 @@ public class UI_Main extends PApplet{
 		init();
 	}
 	public Vector<Integer> note = new Vector<Integer>(numbers.size());
-	public Vector<SinOsc> SinOscs = new Vector<SinOsc>(numbers.size());
+	public Vector<Vector<SinOsc>> Oscs = new Vector<Vector<SinOsc>>();
 	
 	boolean done=false;
 	Random rand= new Random();
@@ -74,9 +74,17 @@ public class UI_Main extends PApplet{
 			for(int b = 0; b<numbers.size();b++) {
 				//Interpreter.objects.get(i).draw(numbers);
 				interpreter.instruments.get(b).playMusic(numbers);
-				
-				SinOscs.add(new SinOsc(this));
-				//SinOscs.get(b).play();
+				Oscs.add(new Vector<SinOsc>());
+				//((Vector<SinOsc>)Oscs.get(b)).setSize(8);
+				((Vector<SinOsc>)Oscs.get(b)).add(new SinOsc(this));
+				((Vector<SinOsc>)Oscs.get(b)).add(new SinOsc(this));
+				((Vector<SinOsc>)Oscs.get(b)).add(new SinOsc(this));
+				((Vector<SinOsc>)Oscs.get(b)).add(new SinOsc(this));
+				((Vector<SinOsc>)Oscs.get(b)).add(new SinOsc(this));
+				((Vector<SinOsc>)Oscs.get(b)).add(new SinOsc(this));
+				((Vector<SinOsc>)Oscs.get(b)).add(new SinOsc(this));
+				((Vector<SinOsc>)Oscs.get(b)).add(new SinOsc(this));
+				//Sin((Vector<SinOsc>)Oscs.get(b)).play();
 				note.add((int)1);
 				//System.out.println(note.get(b).intValue());
 			}
@@ -108,49 +116,49 @@ public class UI_Main extends PApplet{
 					interpreter.objects.get(i).shape = createShape();
 					translate(128,768);
 					if(j==1) {
-						translate(2046-6*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/100,-1024+note.get(i).intValue()*24*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/6000,-128-256*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/1000);
+						translate(2046-6*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/100,-1024+note.get(i).intValue()*24*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/6000,-interpreter.instruments.get(i).numberAssigned-256*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/1000);
 						rotateX((float)(numbers.get(i)*millis()*0.001f*time));
 						rotateY((float)(numbers.get(i)*millis()*0.001f*time));
 						rotateZ((float)(numbers.get(i)*millis()*0.001f*time));
 					}
 					if(j==2){
-						translate(2046-note.get(i).intValue()*24*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/6000,-1024+6*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1)/100,-128-256*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/1000);
+						translate(2046-note.get(i).intValue()*24*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/6000,-1024+6*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1)/100,-interpreter.instruments.get(i).numberAssigned-256*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/1000);
 						rotateX((float)-(numbers.get(i)*millis()*0.001f*time));
 						rotateY((float)(numbers.get(i)*millis()*0.001f*time));
 						rotateZ((float)-(numbers.get(i)*millis()*0.001f*time));
 					}
 					if(j==3) {
-						translate(2046-6*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1)/100,-1024+note.get(i).intValue()*24*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/6000,-128-256*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/1000);
+						translate(2046-6*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1)/100,-1024+note.get(i).intValue()*24*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/6000,-interpreter.instruments.get(i).numberAssigned-256*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/1000);
 						rotateX((float)(numbers.get(i)*millis()*0.001f*time));
 						rotateY((float)-(numbers.get(i)*millis()*0.001f*time));
 						rotateZ((float)(numbers.get(i)*millis()*0.001f*time));
 					}
 					if(j==0){
-						translate(2046-note.get(i).intValue()*24*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/6000,-1024+6*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/100,-128-256*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/1000);
+						translate(2046-note.get(i).intValue()*24*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/6000,-1024+6*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/100,-interpreter.instruments.get(i).numberAssigned-256*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/1000);
 						rotateX((float)-(numbers.get(i)*millis()*0.001f*time));
 						rotateY((float)-(numbers.get(i)*millis()*0.001f*time));
 						rotateZ((float)-(numbers.get(i)*millis()*0.001f*time));
 					}
 					if(j==4) {
-						translate(6*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/100,-note.get(i).intValue()*24*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/6000,-128-256*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/1000);
+						translate(6*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/100,-note.get(i).intValue()*24*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/6000,-interpreter.instruments.get(i).numberAssigned-256*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/1000);
 						rotateX((float)(numbers.get(i)*millis()*0.001f*time));
 						rotateY((float)(numbers.get(i)*millis()*0.001f*time));
 						rotateZ((float)-(numbers.get(i)*millis()*0.001f*time));
 					}
 					if(j==5){
-						translate(note.get(i).intValue()*24*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/6000,-6*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1)/100,-128-256*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/1000);
+						translate(note.get(i).intValue()*24*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/6000,-6*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1)/100,-interpreter.instruments.get(i).numberAssigned-256*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/1000);
 						rotateX((float)-(numbers.get(i)*millis()*0.001f*time));
 						rotateY((float)(numbers.get(i)*millis()*0.001f*time));
 						rotateZ((float)-(numbers.get(i)*millis()*0.001f*time));
 					}
 					if(j==6) {
-						translate(6*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1)/100,-note.get(i).intValue()*24*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/6000,-128-256*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/1000);
+						translate(6*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1)/100,-note.get(i).intValue()*24*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/6000,-interpreter.instruments.get(i).numberAssigned-256*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/1000);
 						rotateX((float)-(numbers.get(i)*millis()*0.001f*time));
 						rotateY((float)-(numbers.get(i)*millis()*0.001f*time));
 						rotateZ((float)(numbers.get(i)*millis()*0.001f*time));
 					}
 					if(j==7){
-						translate(note.get(i).intValue()*24*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/6000,-6*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/100,-128-256*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/1000);
+						translate(note.get(i).intValue()*24*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/6000,-6*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/100,-interpreter.instruments.get(i).numberAssigned-256*interpreter.instruments.get(i).sequence.get(note.get(i).intValue()-1 )/1000);
 						rotateX((float)(numbers.get(i)*millis()*0.001f*time));
 						rotateY((float)-(numbers.get(i)*millis()*0.001f*time));
 						rotateZ((float)-(numbers.get(i)*millis()*0.001f*time));
@@ -165,10 +173,24 @@ public class UI_Main extends PApplet{
 						interpreter.instruments.get(i).trigger = (float) millis() + (1000.0f*time);
 
 					    //System.out.println(interpreter.instruments.get(i).sequence.get(note.get(i).intValue() ));
-					    SinOscs.get(i).stop();
-					    SinOscs.get(i).amp((float)1/numbers.size());
-					    SinOscs.get(i).freq(noteFreq);
-					    SinOscs.get(i).play(noteFreq,(float)1.0f/(float)numbers.size());
+						((Vector<SinOsc>)Oscs.get(i)).get(0).stop();
+						((Vector<SinOsc>)Oscs.get(i)).get(0).play(noteFreq,(float)1.0f/(float)(numbers.size()*4));
+						((Vector<SinOsc>)Oscs.get(i)).get(1).stop();
+						((Vector<SinOsc>)Oscs.get(i)).get(1).play(noteFreq/(numbers.get(i)),(float)1.0f/(float)(numbers.size()*6));
+						((Vector<SinOsc>)Oscs.get(i)).get(2).stop();
+					    ((Vector<SinOsc>)Oscs.get(i)).get(2).play(noteFreq/(pow(numbers.get(i),2.0f)),(float)1.0f/(float)(numbers.size()*10));
+					    ((Vector<SinOsc>)Oscs.get(i)).get(3).stop();
+					    ((Vector<SinOsc>)Oscs.get(i)).get(3).play(noteFreq/(pow(numbers.get(i),3.0f)),(float)1.0f/(float)(numbers.size()*12));
+					    ((Vector<SinOsc>)Oscs.get(i)).get(4).stop();
+					    ((Vector<SinOsc>)Oscs.get(i)).get(4).play(noteFreq/(pow(numbers.get(i),4.0f)),(float)1.0f/(float)(numbers.size()*13));
+					    ((Vector<SinOsc>)Oscs.get(i)).get(5).stop();
+					    ((Vector<SinOsc>)Oscs.get(i)).get(5).play(noteFreq*(pow(numbers.get(i),0.5f)),(float)1.0f/(float)(numbers.size()*10));
+					    ((Vector<SinOsc>)Oscs.get(i)).get(6).stop();
+					    ((Vector<SinOsc>)Oscs.get(i)).get(6).play(noteFreq*(pow(numbers.get(i),.333f)),(float)1.0f/(float)(numbers.size()*12));
+					    ((Vector<SinOsc>)Oscs.get(i)).get(7).stop();
+					    ((Vector<SinOsc>)Oscs.get(i)).get(7).play(noteFreq*(pow(numbers.get(i),0.25f)),(float)1.0f/(float)(numbers.size()*13));
+					   
+					   
 					    
 					    // Advance by one note in the midiSequence;
 					    note.set(i,(int)note.get(i).intValue()+1); 
