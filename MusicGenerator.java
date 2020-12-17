@@ -23,7 +23,7 @@ public class MusicGenerator {
 			float f =  ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
 			sequence= new Vector<Float>((int)f);
 			for (int i= 0; i<f;i++){
-				sequence.add(i,(numbers.get( (int)( (rand.nextInt(numbers.size()))))*numbers.get((int)( (rand.nextInt(numbers.size())))))*440.0f);
+				sequence.add(i,(numbers.get( (int)( (rand.nextInt(numbers.size()))))*numbers.get((int)( (rand.nextInt(numbers.size())))))*330.0f);
 				if(sequence.get(i)==null) {
 					System.out.println("\n"+sequence.get(i));
 				}
@@ -36,7 +36,7 @@ public class MusicGenerator {
 			float f =  ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
 			sequence= new Vector<Float>((int)f);
 			for(int i = 0; i<f;i++) {
-				float c = numbers.get(( (int)( (rand.nextInt(numbers.size())))))*(220.0f/numberAssigned);
+				float c = numbers.get(( (int)( (rand.nextInt(numbers.size())))))*(330.0f/numberAssigned);
 				sequence.add(i,(float) Math.pow(c, numberAssigned));
 				if(sequence.get(i)==null) {
 					System.out.println("\n"+sequence.get(i));
@@ -58,7 +58,7 @@ public class MusicGenerator {
 			float f =  ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
 			sequence= new Vector<Float>((int)f);
 			for(int i = 0; i<f;i++) {
-				float c = numbers.get(( (int)( (rand.nextInt(numbers.size())))))*440.0f;
+				float c = numbers.get(( (int)( (rand.nextInt(numbers.size())))))*330.0f;
 				sequence.add(i,(float)c);
 				if(sequence.get(i)==null) {
 					System.out.println("\n"+sequence.get(i));
@@ -69,7 +69,7 @@ public class MusicGenerator {
 			float f =  ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
 			sequence= new Vector<Float>((int)f);
 			for(int i = 0; i<f;i++) {
-				float c = numbers.get(( (int)( (rand.nextInt(numbers.size())))))*(220.0f/numberAssigned);
+				float c = numbers.get(( (int)( (rand.nextInt(numbers.size())))))*(330.0f/numberAssigned);
 				sequence.add(i,(float) Math.pow(c, numberAssigned));
 				if(sequence.get(i)==null) {
 					System.out.println("\n"+sequence.get(i));
@@ -80,7 +80,7 @@ public class MusicGenerator {
 			float f =  ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
 			sequence= new Vector<Float>((int)f);
 			for (int i= 0; i<f;i++){
-				sequence.add(i,numbers.get( (int)( (rand.nextInt(numbers.size()))))*440.0f);
+				sequence.add(i,numbers.get( (int)( (rand.nextInt(numbers.size()))))*330.0f);
 				if(sequence.get(i)==null) {
 					System.out.println("\n"+sequence.get(i));
 				}
@@ -92,7 +92,7 @@ public class MusicGenerator {
 			float f =   ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
 			sequence= new Vector<Float>((int)f);
 			for(int i = 0; i<f;i++) {
-				float c = (numbers.get( (int)( (rand.nextInt(numbers.size()))))*numbers.get((int)( (rand.nextInt(numbers.size())))))*(220.0f/numberAssigned);
+				float c = (numbers.get( (int)( (rand.nextInt(numbers.size()))))*numbers.get((int)( (rand.nextInt(numbers.size())))))*(330.0f/numberAssigned);
 				sequence.add(i,(float) Math.pow(c, numberAssigned));
 				if(sequence.get(i)==null) {
 					System.out.println("\n"+sequence.get(i));
@@ -103,7 +103,7 @@ public class MusicGenerator {
 			float f =   ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
 			sequence= new Vector<Float>((int)f);
 			for(int i = 0; i<f;i++) {
-				float c = (numbers.get((int)( ( rand.nextInt(numbers.size()))))*numbers.get((int)( (rand.nextInt(numbers.size()))))*numbers.get(numbers.size()-1-(int)( (rand.nextInt(numbers.size())))))*(220.0f/numberAssigned);
+				float c = (numbers.get((int)( ( rand.nextInt(numbers.size()))))*numbers.get((int)( (rand.nextInt(numbers.size()))))*numbers.get(numbers.size()-1-(int)( (rand.nextInt(numbers.size())))))*(330.0f/numberAssigned);
 				sequence.add(i,(float) Math.pow(c, numberAssigned));
 				if(sequence.get(i)==null) {
 					System.out.println("\n"+sequence.get(i));
@@ -114,7 +114,7 @@ public class MusicGenerator {
 			float f =  ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
 			sequence= new Vector<Float>((int)f);
 			for (int i= 0; i<f;i++){
-				sequence.add(i,numbers.get((int)(  (rand.nextInt(numbers.size()))))+(numbers.get((int)( (rand.nextInt(numbers.size()))))*numbers.get((int)( (rand.nextInt(numbers.size()))))*numbers.get(numbers.size()-1-(int)( (rand.nextInt(numbers.size())))))*440.0f);
+				sequence.add(i,numbers.get((int)(  (rand.nextInt(numbers.size()))))+(numbers.get((int)( (rand.nextInt(numbers.size()))))*numbers.get((int)( (rand.nextInt(numbers.size()))))*numbers.get(numbers.size()-1-(int)( (rand.nextInt(numbers.size())))))*330.0f);
 				if(sequence.get(i)==null) {
 					System.out.println("\n"+sequence.get(i));
 				}
@@ -126,7 +126,7 @@ public class MusicGenerator {
 			float f =  ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
 			sequence= new Vector<Float>((int)f);
 			for (int i= 0; i<f;i++){
-				sequence.add(i,(numbers.get(numbers.size()-1-(int)( (rand.nextInt(numbers.size()))))*numbers.get((int)( (rand.nextInt(numbers.size())))))*440.0f);
+				sequence.add(i,(numbers.get(numbers.size()-1-(int)( (rand.nextInt(numbers.size()))))*numbers.get((int)( (rand.nextInt(numbers.size())))))*330.0f);
 				if(sequence.get(i)==null) {
 					System.out.println("\n"+sequence.get(i));
 				}
@@ -139,7 +139,7 @@ public class MusicGenerator {
 			float f =  ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
 			sequence= new Vector<Float>((int)f);
 			for(int i = 0; i<f;i++) {
-				float c = numbers.get((numbers.size()-1-(int)( (rand.nextInt(numbers.size())))))*(220.0f/numberAssigned);
+				float c = numbers.get((numbers.size()-1-(int)( (rand.nextInt(numbers.size())))))*(330.0f/numberAssigned);
 				sequence.add(i,(float) Math.pow(c, numberAssigned));
 				if(sequence.get(i)==null) {
 					System.out.println("\n"+sequence.get(i));
@@ -161,7 +161,7 @@ public class MusicGenerator {
 			float f =  ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
 			sequence= new Vector<Float>((int)f);
 			for(int i = 0; i<f;i++) {
-				float c = numbers.get((numbers.size()-1-(int)( (rand.nextInt(numbers.size())))))*440.0f;
+				float c = numbers.get((numbers.size()-1-(int)( (rand.nextInt(numbers.size())))))*330.0f;
 				sequence.add(i,(float)c);
 				if(sequence.get(i)==null) {
 					System.out.println("\n"+sequence.get(i));
@@ -172,7 +172,7 @@ public class MusicGenerator {
 			float f =  ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
 			sequence= new Vector<Float>((int)f);
 			for(int i = 0; i<f;i++) {
-				float c = numbers.get((numbers.size()-1-(int)( (rand.nextInt(numbers.size())))))*(220.0f/numberAssigned);
+				float c = numbers.get((numbers.size()-1-(int)( (rand.nextInt(numbers.size())))))*(330.0f/numberAssigned);
 				sequence.add(i,(float) Math.pow(c, numberAssigned));
 				if(sequence.get(i)==null) {
 					System.out.println("\n"+sequence.get(i));
@@ -183,7 +183,7 @@ public class MusicGenerator {
 			float f =  ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
 			sequence= new Vector<Float>((int)f);
 			for (int i= 0; i<f;i++){
-				sequence.add(i,numbers.get(numbers.size()-1-(int)( (rand.nextInt(numbers.size()))))*440.0f);
+				sequence.add(i,numbers.get(numbers.size()-1-(int)( (rand.nextInt(numbers.size()))))*330.0f);
 				if(sequence.get(i)==null) {
 					System.out.println("\n"+sequence.get(i));
 				}
@@ -195,7 +195,7 @@ public class MusicGenerator {
 			float f =   ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
 			sequence= new Vector<Float>((int)f);
 			for(int i = 0; i<f;i++) {
-				float c = (numbers.get(numbers.size()-1-(int)( (rand.nextInt(numbers.size()))))*numbers.get((int)( (rand.nextInt(numbers.size())))))*(220.0f/numberAssigned);
+				float c = (numbers.get(numbers.size()-1-(int)( (rand.nextInt(numbers.size()))))*numbers.get((int)( (rand.nextInt(numbers.size())))))*(330.0f/numberAssigned);
 				sequence.add(i,(float) Math.pow(c, numberAssigned));
 				if(sequence.get(i)==null) {
 					System.out.println("\n"+sequence.get(i));
@@ -206,7 +206,7 @@ public class MusicGenerator {
 			float f =   ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
 			sequence= new Vector<Float>((int)f);
 			for(int i = 0; i<f;i++) {
-				float c = (numbers.get(numbers.size()-1-(int)( (rand.nextInt(numbers.size()))))*numbers.get((int)( (rand.nextInt(numbers.size()))))*numbers.get( (int)( (rand.nextInt(numbers.size())))))*(220.0f/numberAssigned);
+				float c = (numbers.get(numbers.size()-1-(int)( (rand.nextInt(numbers.size()))))*numbers.get((int)( (rand.nextInt(numbers.size()))))*numbers.get( (int)( (rand.nextInt(numbers.size())))))*(330.0f/numberAssigned);
 				sequence.add(i,(float) Math.pow(c, numberAssigned));
 				if(sequence.get(i)==null) {
 					System.out.println("\n"+sequence.get(i));
@@ -217,7 +217,7 @@ public class MusicGenerator {
 			float f =  ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
 			sequence= new Vector<Float>((int)f);
 			for (int i= 0; i<f;i++){
-				sequence.add(i,numbers.get(numbers.size()-1-(int)( (rand.nextInt(numbers.size()))))+(numbers.get((int)( (rand.nextInt(numbers.size()))))*numbers.get((int)( (rand.nextInt(numbers.size()))))*numbers.get( (int)( (rand.nextInt(numbers.size())))))*440.0f);
+				sequence.add(i,numbers.get(numbers.size()-1-(int)( (rand.nextInt(numbers.size()))))+(numbers.get((int)( (rand.nextInt(numbers.size()))))*numbers.get((int)( (rand.nextInt(numbers.size()))))*numbers.get( (int)( (rand.nextInt(numbers.size())))))*330.0f);
 				if(sequence.get(i)==null) {
 					System.out.println("\n"+sequence.get(i));
 				}

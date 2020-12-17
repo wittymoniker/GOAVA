@@ -12,6 +12,12 @@ public class GeometricObject {
 	float numberAssigned;
 	public PShape shape;
 	Random rand= new Random();
+	float osX;
+	float osY;
+	public void assignOffset() {
+		osX= rand.nextFloat()*(2048.0f);
+		osY= rand.nextFloat()*(1024.0f);
+	}
 	public void draw(Vector<Float> numbers) {
 		interval = 1.0f+((1.0f/(((Math.abs(((((((numberAssigned)))))))))+1.0f)));
 		if(rand.nextInt(2)==1) {
@@ -26,61 +32,61 @@ public class GeometricObject {
 		if(mode == 0) {//draw all numbers complex
 			  
 			 for(int i = 0; i<numbers.size();i++) {
-				 shape.vertex(50*numbers.get(i)*(float)Math.sin(numbers.get(i)),-50*numbers.get(i)*(float)Math.cos(numbers.get(i)));
-				 shape.vertex(50*numbers.get(i)*(float)Math.acos(Math.sin(numbers.get(i)*3.14159)),-50*numbers.get(i));
-				 shape.vertex(50*numbers.get(i)*(float)Math.cos(numbers.get(i)),-50*numbers.get(i)*(float)Math.acos(Math.sin(numbers.get(i)*3.14159)));
+				 shape.vertex(osX-50*numbers.get(i)*(float)Math.sin(numbers.get(i)),osY-50*numbers.get(i)*(float)Math.cos(numbers.get(i)));
+				 shape.vertex(osX-50*numbers.get(i)*(float)Math.acos(Math.sin(numbers.get(i)*3.14159)),osY-50*numbers.get(i));
+				 shape.vertex(osX-50*numbers.get(i)*(float)Math.cos(numbers.get(i)),osY-50*numbers.get(i)*(float)Math.acos(Math.sin(numbers.get(i)*3.14159)));
 			 }
 			 
 			  
 		}
 		if(mode == 1) {//draw number shape ceil verts
 			for(int i = 0; i<(int)Math.ceil((double)numberAssigned);i++) {
-				 shape.vertex((float)Math.asin(((i+1.0f)/numberAssigned))*50,(float)Math.acos(((i+1.0f)/numberAssigned))*50);
+				 shape.vertex(osX-(float)Math.asin(((i+1.0f)/numberAssigned))*50,osY-(float)Math.acos(((i+1.0f)/numberAssigned))*50);
 				 
 			 }
 		}
 		if(mode == 2) {//draw number shape floor verts
 			for(int i = 0; i<(int)Math.floor((double)numberAssigned);i++) {
-				 shape.vertex((float)Math.asin(((i+1.0f)/numberAssigned))*50,(float)Math.acos(((i+1.0f)/numberAssigned))*50);
+				 shape.vertex(osX-(float)Math.asin(((i+1.0f)/numberAssigned))*50,osY-(float)Math.acos(((i+1.0f)/numberAssigned))*50);
 				 
 			 }
 		}
 		if(mode == 3) {//draw all numbers randomize
 			for(int i = 0; i<numbers.size();i++) {
 				
-				 shape.vertex((float)Math.cos(numbers.get(i))*numbers.get(i)*50,(float)Math.acos(Math.sin(numbers.get(i)*3.14159))*numbers.get(i)*50);
-				 shape.vertex(0,(float)Math.acos(Math.sin(numbers.get(i)*3.14159))*numbers.get(i)*(float)Math.sin(numbers.get(i))*50);
-				 shape.vertex((float)Math.sin(numbers.get(i))*numbers.get(i)*(float)Math.cos(numbers.get(i))*50,0);
+				 shape.vertex(osX-(float)Math.cos(numbers.get(i))*numbers.get(i)*50,osY-(float)Math.acos(Math.sin(numbers.get(i)*3.14159))*numbers.get(i)*50);
+				 shape.vertex(osX-0,osY-(float)Math.acos(Math.sin(numbers.get(i)*3.14159))*numbers.get(i)*50);
+				 shape.vertex(osX-(float)Math.sin(numbers.get(i))*numbers.get(i)*(float)Math.cos(numbers.get(i))*50,osY-0);
 			 }
 			 
 		}
 		if(mode == 4) {//draw all numbers complex
 			  
 			 for(int i = 0; i<numbers.size();i++) {
-				 shape.vertex(50*numbers.get(i)*(float)Math.sin(numbers.get(i)),-50*numbers.get(i)*(float)Math.cos(numbers.get(i)),50*numbers.get(i)*(float)Math.acos(Math.sin(numbers.get(i)*3.14159)));
-				 shape.vertex(50*numbers.get(i)*(float)Math.acos(Math.sin(numbers.get(i)*3.14159)),-50*numbers.get(i)*(float)Math.sin(numbers.get(i)),50*numbers.get(i)*(float)Math.cos(numbers.get(i)));
-				 shape.vertex(50*numbers.get(i)*(float)Math.cos(numbers.get(i)),-50*numbers.get(i)*(float)Math.acos(Math.sin(numbers.get(i)*3.14159)),50*numbers.get(i)*(float)Math.sin(numbers.get(i)));
+				 shape.vertex(osX-50*numbers.get(i)*(float)Math.sin(numbers.get(i)),osY-50*numbers.get(i)*(float)Math.cos(numbers.get(i)),50*numbers.get(i)*(float)Math.acos(Math.sin(numbers.get(i)*3.14159)));
+				 shape.vertex(osX-50*numbers.get(i)*(float)Math.acos(Math.sin(numbers.get(i)*3.14159)),osY-50*numbers.get(i)*(float)Math.sin(numbers.get(i)),50*numbers.get(i)*(float)Math.cos(numbers.get(i)));
+				 shape.vertex(osX-50*numbers.get(i)*(float)Math.cos(numbers.get(i)),osY-50*numbers.get(i)*(float)Math.acos(Math.sin(numbers.get(i)*3.14159)),50*numbers.get(i)*(float)Math.sin(numbers.get(i)));
 			 }
 			 
 			  
 		}
 		if(mode == 5) {//draw number shape ceil verts
 			for(int i = 0; i<(int)Math.ceil((double)numberAssigned);i++) {
-				 shape.vertex((float)Math.asin(((i+1.0f)/numberAssigned))*50,(float)Math.acos(((i+1.0f)/numberAssigned))*50,(float)Math.atan(((i+1.0f)/numberAssigned))*numberAssigned*50);
+				 shape.vertex(osX-(float)Math.asin(((i+1.0f)/numberAssigned))*50,osY-(float)Math.acos(((i+1.0f)/numberAssigned))*50,(float)Math.atan(((i+1.0f)/numberAssigned))*numberAssigned*50);
 				 
 			 }
 		}
 		if(mode == 6) {//draw number shape floor verts
 			for(int i = 0; i<(int)Math.floor((double)numberAssigned);i++) {
-				 shape.vertex((float)Math.asin(((i+1.0f)/numberAssigned))*50,(float)Math.acos(((i+1.0f)/numberAssigned))*50,(float)Math.atan(((i+1.0f)/numberAssigned))*numberAssigned*50);
+				 shape.vertex(osX-(float)Math.asin(((i+1.0f)/numberAssigned))*50,osY-(float)Math.acos(((i+1.0f)/numberAssigned))*50,(float)Math.atan(((i+1.0f)/numberAssigned))*numberAssigned*50);
 				 
 			 }
 		}
 		if(mode == 7) {//draw all numbers randomize
 			for(int i = 0; i<numbers.size();i++) {
-				shape.vertex(50*numbers.get(i),-50*numbers.get(i)*(float)Math.cos(numbers.get(i)),50*numbers.get(i)*(float)Math.acos(Math.sin(numbers.get(i)*3.14159)));
-				shape.vertex(50*numbers.get(i)*(float)Math.acos(Math.sin(numbers.get(i)*3.14159)),-50*numbers.get(i),50*numbers.get(i)*(float)Math.cos(numbers.get(i)));
-				shape.vertex(50*numbers.get(i)*(float)Math.cos(numbers.get(i)),-50*numbers.get(i)*(float)Math.acos(Math.sin(numbers.get(i)*3.14159)),50*numbers.get(i));
+				shape.vertex(osX-50*numbers.get(i),osY-50*numbers.get(i)*(float)Math.cos(numbers.get(i)),50*numbers.get(i)*(float)Math.acos(Math.sin(numbers.get(i)*3.14159)));
+				shape.vertex(osX-50*numbers.get(i)*(float)Math.acos(Math.sin(numbers.get(i)*3.14159)),osY-50*numbers.get(i),50*numbers.get(i)*(float)Math.cos(numbers.get(i)));
+				shape.vertex(osX-50*numbers.get(i)*(float)Math.cos(numbers.get(i)),osY-50*numbers.get(i)*(float)Math.acos(Math.sin(numbers.get(i)*3.14159)),50*numbers.get(i));
 			}
 			 
 		}

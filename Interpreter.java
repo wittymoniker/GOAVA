@@ -32,6 +32,7 @@ public class Interpreter {
 			objects.get(i).numberAssigned = numbers.get(i);
 			objects.get(i).mode = rand.nextInt(8);
 			objects.get(i).interval = numbers.get(rand.nextInt(numbers.size()));
+			objects.get(i).assignOffset();
 			instruments.add(i,new MusicGenerator());
 			instruments.get(i).numberAssigned = numbers.get(i);
 			instruments.get(i).mode = rand.nextInt(18);
