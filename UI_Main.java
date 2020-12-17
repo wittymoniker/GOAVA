@@ -178,17 +178,17 @@ public class UI_Main extends PApplet{
 						((Vector<SinOsc>)Oscs.get(i)).get(1).stop();
 						((Vector<SinOsc>)Oscs.get(i)).get(1).play(noteFreq/(numbers.get(i)),(float)1.0f/(float)(numbers.size()*6));
 						((Vector<SinOsc>)Oscs.get(i)).get(2).stop();
-					    ((Vector<SinOsc>)Oscs.get(i)).get(2).play(noteFreq/(pow(numbers.get(i),2.0f)),(float)1.0f/(float)(numbers.size()*10));
+					    ((Vector<SinOsc>)Oscs.get(i)).get(2).play(noteFreq/(1.0f+abs(pow(numbers.get(i),2.0f))),(float)1.0f/(float)(numbers.size()*10));
 					    ((Vector<SinOsc>)Oscs.get(i)).get(3).stop();
-					    ((Vector<SinOsc>)Oscs.get(i)).get(3).play(noteFreq/(pow(numbers.get(i),3.0f)),(float)1.0f/(float)(numbers.size()*12));
+					    ((Vector<SinOsc>)Oscs.get(i)).get(3).play(noteFreq/(1.0f+abs(pow(numbers.get(i),3.0f))),(float)1.0f/(float)(numbers.size()*12));
 					    ((Vector<SinOsc>)Oscs.get(i)).get(4).stop();
-					    ((Vector<SinOsc>)Oscs.get(i)).get(4).play(noteFreq/(pow(numbers.get(i),4.0f)),(float)1.0f/(float)(numbers.size()*13));
+					    ((Vector<SinOsc>)Oscs.get(i)).get(4).play(noteFreq/(1.0f+abs(pow(numbers.get(i),4.0f))),(float)1.0f/(float)(numbers.size()*13));
 					    ((Vector<SinOsc>)Oscs.get(i)).get(5).stop();
-					    ((Vector<SinOsc>)Oscs.get(i)).get(5).play(noteFreq*(pow(numbers.get(i),0.5f)),(float)1.0f/(float)(numbers.size()*10));
+					    ((Vector<SinOsc>)Oscs.get(i)).get(5).play(noteFreq*(1.0f+abs(pow(numbers.get(i),0.5f))),(float)1.0f/(float)(numbers.size()*10));
 					    ((Vector<SinOsc>)Oscs.get(i)).get(6).stop();
-					    ((Vector<SinOsc>)Oscs.get(i)).get(6).play(noteFreq*(pow(numbers.get(i),.333f)),(float)1.0f/(float)(numbers.size()*12));
+					    ((Vector<SinOsc>)Oscs.get(i)).get(6).play(noteFreq*(1.0f+abs(pow(numbers.get(i),.333f))),(float)1.0f/(float)(numbers.size()*12));
 					    ((Vector<SinOsc>)Oscs.get(i)).get(7).stop();
-					    ((Vector<SinOsc>)Oscs.get(i)).get(7).play(noteFreq*(pow(numbers.get(i),0.25f)),(float)1.0f/(float)(numbers.size()*13));
+					    ((Vector<SinOsc>)Oscs.get(i)).get(7).play(noteFreq*(1.0f+abs(pow(numbers.get(i),0.25f))),(float)1.0f/(float)(numbers.size()*13));
 					   
 					   
 					    
