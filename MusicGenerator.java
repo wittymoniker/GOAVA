@@ -20,7 +20,7 @@ public class MusicGenerator {
 			interval = 1.0f-((1.0f/(((Math.abs(((((((numberAssigned)))))))))+1.0f)));
 		}
 		if(mode == 0) {//play arpeg numbers multiplying each other
-			float f =  ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
+			float f =  (float)numbers.size()*16f;
 			sequence= new Vector<Float>((int)f);
 			for (int i= 0; i<f;i++){
 				sequence.add(i,(numbers.get( (int)( (rand.nextInt(numbers.size()))))*numbers.get((int)( (rand.nextInt(numbers.size())))))*330.0f);
@@ -33,7 +33,7 @@ public class MusicGenerator {
 		}
 		
 		if(mode == 1) {//play note exp low frequency number
-			float f =  ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
+			float f =  (float)numbers.size()*16f;
 			sequence= new Vector<Float>((int)f);
 			for(int i = 0; i<f;i++) {
 				float c = numbers.get(( (int)( (rand.nextInt(numbers.size())))))*(330.0f/numberAssigned);
@@ -44,7 +44,7 @@ public class MusicGenerator {
 			}	
 		}
 		if(mode == 2) {//play note multiplicative scale number
-			float f =  ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
+			float f =  (float)numbers.size()*16f;
 			sequence= new Vector<Float>((int)f);
 			for(int i = 0; i<f;i++) {
 				float c = numbers.get(( (int)( (rand.nextInt(numbers.size())))))*((float)1760.0f*4.0f/numberAssigned);
@@ -55,7 +55,7 @@ public class MusicGenerator {
 			}	
 		}
 		if(mode == 3) {//play note randoms number
-			float f =  ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
+			float f =  (float)numbers.size()*16f;
 			sequence= new Vector<Float>((int)f);
 			for(int i = 0; i<f;i++) {
 				float c = numbers.get(( (int)( (rand.nextInt(numbers.size())))))*330.0f;
@@ -66,7 +66,7 @@ public class MusicGenerator {
 			}	
 		}
 		if(mode == 4) {//play note exp low frequency number(more likely)
-			float f =  ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
+			float f =  (float)numbers.size()*16f;
 			sequence= new Vector<Float>((int)f);
 			for(int i = 0; i<f;i++) {
 				float c = numbers.get(( (int)( (rand.nextInt(numbers.size())))))*(330.0f/numberAssigned);
@@ -77,7 +77,7 @@ public class MusicGenerator {
 			}	
 		}
 		if(mode == 5) {//play arpeg numbers
-			float f =  ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
+			float f =  (float)numbers.size()*16f;
 			sequence= new Vector<Float>((int)f);
 			for (int i= 0; i<f;i++){
 				sequence.add(i,numbers.get( (int)( (rand.nextInt(numbers.size()))))*330.0f);
@@ -89,7 +89,7 @@ public class MusicGenerator {
 			
 		}
 		if(mode == 6) {//play note exp low frequency number
-			float f =   ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
+			float f =   (float)numbers.size()*16f;
 			sequence= new Vector<Float>((int)f);
 			for(int i = 0; i<f;i++) {
 				float c = (numbers.get( (int)( (rand.nextInt(numbers.size()))))*numbers.get((int)( (rand.nextInt(numbers.size())))))*(330.0f/numberAssigned);
@@ -100,7 +100,7 @@ public class MusicGenerator {
 			}	
 		}
 		if(mode == 7) {//play note exp low frequency number multiplied 3 nums
-			float f =   ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
+			float f =   (float)numbers.size()*16f;
 			sequence= new Vector<Float>((int)f);
 			for(int i = 0; i<f;i++) {
 				float c = (numbers.get((int)( ( rand.nextInt(numbers.size()))))*numbers.get((int)( (rand.nextInt(numbers.size()))))*numbers.get(numbers.size()-1-(int)( (rand.nextInt(numbers.size())))))*(330.0f/numberAssigned);
@@ -111,7 +111,7 @@ public class MusicGenerator {
 			}	
 		}
 		if(mode == 8) {//play arpeg numbers multiplying each other 3 nums
-			float f =  ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
+			float f =  (float)numbers.size()*16f;
 			sequence= new Vector<Float>((int)f);
 			for (int i= 0; i<f;i++){
 				sequence.add(i,numbers.get((int)(  (rand.nextInt(numbers.size()))))+(numbers.get((int)( (rand.nextInt(numbers.size()))))*numbers.get((int)( (rand.nextInt(numbers.size()))))*numbers.get(numbers.size()-1-(int)( (rand.nextInt(numbers.size())))))*330.0f);
@@ -123,7 +123,7 @@ public class MusicGenerator {
 			
 		}
 		if(mode == 9) {//play arpeg numbers multiplying each other
-			float f =  ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
+			float f =  (float)numbers.size()*16f;
 			sequence= new Vector<Float>((int)f);
 			for (int i= 0; i<f;i++){
 				sequence.add(i,(numbers.get(numbers.size()-1-(int)( (rand.nextInt(numbers.size()))))*numbers.get((int)( (rand.nextInt(numbers.size())))))*330.0f);
@@ -136,7 +136,7 @@ public class MusicGenerator {
 		}
 		
 		if(mode == 10) {//play note exp low frequency number
-			float f =  ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
+			float f =  (float)numbers.size()*16f;
 			sequence= new Vector<Float>((int)f);
 			for(int i = 0; i<f;i++) {
 				float c = numbers.get((numbers.size()-1-(int)( (rand.nextInt(numbers.size())))))*(330.0f/numberAssigned);
@@ -147,7 +147,7 @@ public class MusicGenerator {
 			}	
 		}
 		if(mode == 11) {//play note multiplicative scale number
-			float f =  ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
+			float f =  (float)numbers.size()*16f;
 			sequence= new Vector<Float>((int)f);
 			for(int i = 0; i<f;i++) {
 				float c = numbers.get((numbers.size()-1-(int)( (rand.nextInt(numbers.size())))))*((float)1760.0f*4.0f/numberAssigned);
@@ -158,7 +158,7 @@ public class MusicGenerator {
 			}	
 		}
 		if(mode == 12) {//play note randoms number
-			float f =  ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
+			float f =  (float)numbers.size()*16f;
 			sequence= new Vector<Float>((int)f);
 			for(int i = 0; i<f;i++) {
 				float c = numbers.get((numbers.size()-1-(int)( (rand.nextInt(numbers.size())))))*330.0f;
@@ -169,7 +169,7 @@ public class MusicGenerator {
 			}	
 		}
 		if(mode == 13) {//play note exp low frequency number(more likely)
-			float f =  ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
+			float f =  (float)numbers.size()*16f;
 			sequence= new Vector<Float>((int)f);
 			for(int i = 0; i<f;i++) {
 				float c = numbers.get((numbers.size()-1-(int)( (rand.nextInt(numbers.size())))))*(330.0f/numberAssigned);
@@ -180,7 +180,7 @@ public class MusicGenerator {
 			}	
 		}
 		if(mode == 14) {//play arpeg numbers
-			float f =  ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
+			float f =  (float)numbers.size()*16f;
 			sequence= new Vector<Float>((int)f);
 			for (int i= 0; i<f;i++){
 				sequence.add(i,numbers.get(numbers.size()-1-(int)( (rand.nextInt(numbers.size()))))*330.0f);
@@ -192,7 +192,7 @@ public class MusicGenerator {
 			
 		}
 		if(mode == 15) {//play note exp low frequency number
-			float f =   ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
+			float f =   (float)numbers.size()*16f;
 			sequence= new Vector<Float>((int)f);
 			for(int i = 0; i<f;i++) {
 				float c = (numbers.get(numbers.size()-1-(int)( (rand.nextInt(numbers.size()))))*numbers.get((int)( (rand.nextInt(numbers.size())))))*(330.0f/numberAssigned);
@@ -203,7 +203,7 @@ public class MusicGenerator {
 			}	
 		}
 		if(mode == 16) {//play note exp low frequency number multiplied 3 nums
-			float f =   ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
+			float f =   (float)numbers.size()*16f;
 			sequence= new Vector<Float>((int)f);
 			for(int i = 0; i<f;i++) {
 				float c = (numbers.get(numbers.size()-1-(int)( (rand.nextInt(numbers.size()))))*numbers.get((int)( (rand.nextInt(numbers.size()))))*numbers.get( (int)( (rand.nextInt(numbers.size())))))*(330.0f/numberAssigned);
@@ -214,7 +214,7 @@ public class MusicGenerator {
 			}	
 		}
 		if(mode == 17) {//play arpeg numbers multiplying each other 3 nums
-			float f =  ((float)numbers.size()*2.0f+6.0f*Math.abs(numbers.get((int)( (rand.nextInt(numbers.size()))))));
+			float f =  (float)numbers.size()*16f;
 			sequence= new Vector<Float>((int)f);
 			for (int i= 0; i<f;i++){
 				sequence.add(i,numbers.get(numbers.size()-1-(int)( (rand.nextInt(numbers.size()))))+(numbers.get((int)( (rand.nextInt(numbers.size()))))*numbers.get((int)( (rand.nextInt(numbers.size()))))*numbers.get( (int)( (rand.nextInt(numbers.size())))))*330.0f);
