@@ -39,8 +39,8 @@ public class UI_Main extends PApplet{
 		for(int i = 0; i<numbers.size();i++) {
 			//Interpreter.objects.get(i).draw(numbers);
 			interpreter.instruments.get(i).playMusic(numbers);
-		    //Pulses[i].amp((float)1/(float)numbers.size());
-		    //Pulses[i].freq((float) Interpreter.instruments.get(i).sequence[0]);
+		    //SinOscs[i].amp((float)1/(float)numbers.size());
+		    //SinOscs[i].freq((float) Interpreter.instruments.get(i).sequence[0]);
 		}
 		reader.close();
 	}
@@ -51,7 +51,7 @@ public class UI_Main extends PApplet{
 		init();
 	}
 	public Vector<Integer> note = new Vector<Integer>(numbers.size());
-	public Vector<Vector<Pulse>> Oscs = new Vector<Vector<Pulse>>();
+	public Vector<Vector<SinOsc>> Oscs = new Vector<Vector<SinOsc>>();
 	
 	boolean done=false;
 	Random rand= new Random();
@@ -74,34 +74,34 @@ public class UI_Main extends PApplet{
 			for(int b = 0; b<numbers.size();b++) {
 				//Interpreter.objects.get(i).draw(numbers);
 				interpreter.instruments.get(b).playMusic(numbers);
-				Oscs.add(new Vector<Pulse>());
-				//((Vector<Pulse>)Oscs.get(b)).setSize(8);
-				((Vector<Pulse>)Oscs.get(b)).add(new Pulse(this));
-				((Vector<Pulse>)Oscs.get(b)).add(new Pulse(this));
-				((Vector<Pulse>)Oscs.get(b)).add(new Pulse(this));
-				((Vector<Pulse>)Oscs.get(b)).add(new Pulse(this));
-				((Vector<Pulse>)Oscs.get(b)).add(new Pulse(this));
-				((Vector<Pulse>)Oscs.get(b)).add(new Pulse(this));
-				//((Vector<Pulse>)Oscs.get(b)).add(new Pulse(this));
-				//((Vector<Pulse>)Oscs.get(b)).add(new Pulse(this));
+				Oscs.add(new Vector<SinOsc>());
+				//((Vector<SinOsc>)Oscs.get(b)).setSize(8);
+				((Vector<SinOsc>)Oscs.get(b)).add(new SinOsc(this));
+				((Vector<SinOsc>)Oscs.get(b)).add(new SinOsc(this));
+				((Vector<SinOsc>)Oscs.get(b)).add(new SinOsc(this));
+				((Vector<SinOsc>)Oscs.get(b)).add(new SinOsc(this));
+				((Vector<SinOsc>)Oscs.get(b)).add(new SinOsc(this));
+				((Vector<SinOsc>)Oscs.get(b)).add(new SinOsc(this));
+				//((Vector<SinOsc>)Oscs.get(b)).add(new SinOsc(this));
+				//((Vector<SinOsc>)Oscs.get(b)).add(new SinOsc(this));
 				note.add((int)1);
 				//System.out.println(note.get(b).intValue());
-				((Vector<Pulse>)Oscs.get(b)).get(0).width(1.0f/(1.0f+numbers.get(b)));
-				((Vector<Pulse>)Oscs.get(b)).get(1).width(2.0f/(2.0f+numbers.get(b)*2));
-				((Vector<Pulse>)Oscs.get(b)).get(2).width(3.0f/(3.0f+numbers.get(b)*3));
-				((Vector<Pulse>)Oscs.get(b)).get(3).width(4.0f/(4.0f+numbers.get(b)*4));
-				((Vector<Pulse>)Oscs.get(b)).get(4).width(5.0f/(5.0f+numbers.get(b)*5));
-				((Vector<Pulse>)Oscs.get(b)).get(5).width(6.0f/(6.0f+numbers.get(b)*6));
-				//((Vector<Pulse>)Oscs.get(b)).get(6).width(7.0f/(7.0f+numbers.get(b)*7));
-				//((Vector<Pulse>)Oscs.get(b)).get(7).width(8.0f/(8.0f+numbers.get(b)*8));
-				((Vector<Pulse>)Oscs.get(b)).get(0).play(110,(float)1.0f/(float)(numbers.size()*4));
-				((Vector<Pulse>)Oscs.get(b)).get(1).play(110/(numbers.get(b)),(float)1.0f/(float)(numbers.size()*6));
-			    ((Vector<Pulse>)Oscs.get(b)).get(2).play(110/(1.0f+abs(pow(numbers.get(b),2.0f))),(float)1.0f/(float)(numbers.size()*10));
-			    ((Vector<Pulse>)Oscs.get(b)).get(3).play(110/(1.0f+abs(pow(numbers.get(b),3.0f))),(float)1.0f/(float)(numbers.size()*10));
-			    ((Vector<Pulse>)Oscs.get(b)).get(4).play(110/(1.0f+abs(pow(numbers.get(b),4.0f))),(float)1.0f/(float)(numbers.size()*13));
-			    ((Vector<Pulse>)Oscs.get(b)).get(5).play(110*(1.0f+abs(pow(numbers.get(b),0.5f))),(float)1.0f/(float)(numbers.size()*10));
-			    //((Vector<Pulse>)Oscs.get(b)).get(6).play(110*(1.0f+abs(pow(numbers.get(b),.333f))),(float)1.0f/(float)(numbers.size()*12));
-			    //((Vector<Pulse>)Oscs.get(b)).get(7).play(110*(1.0f+abs(pow(numbers.get(b),0.25f))),(float)1.0f/(float)(numbers.size()*13));
+				/*((Vector<SinOsc>)Oscs.get(b)).get(0).width(1.0f/(1.0f+numbers.get(b)));
+				((Vector<SinOsc>)Oscs.get(b)).get(1).width(2.0f/(2.0f+numbers.get(b)*2));
+				((Vector<SinOsc>)Oscs.get(b)).get(2).width(3.0f/(3.0f+numbers.get(b)*3));
+				((Vector<SinOsc>)Oscs.get(b)).get(3).width(4.0f/(4.0f+numbers.get(b)*4));
+				((Vector<SinOsc>)Oscs.get(b)).get(4).width(5.0f/(5.0f+numbers.get(b)*5));
+				((Vector<SinOsc>)Oscs.get(b)).get(5).width(6.0f/(6.0f+numbers.get(b)*6));*/
+				//((Vector<SinOsc>)Oscs.get(b)).get(6).width(7.0f/(7.0f+numbers.get(b)*7));
+				//((Vector<SinOsc>)Oscs.get(b)).get(7).width(8.0f/(8.0f+numbers.get(b)*8));
+				((Vector<SinOsc>)Oscs.get(b)).get(0).play(110,(float)1.0f/(float)(numbers.size()*4));
+				((Vector<SinOsc>)Oscs.get(b)).get(1).play(110/(numbers.get(b)),(float)1.0f/(float)(numbers.size()*6));
+			    ((Vector<SinOsc>)Oscs.get(b)).get(2).play(110/(1.0f+abs(pow(numbers.get(b),2.0f))),(float)1.0f/(float)(numbers.size()*10));
+			    ((Vector<SinOsc>)Oscs.get(b)).get(3).play(110/(1.0f+abs(pow(numbers.get(b),3.0f))),(float)1.0f/(float)(numbers.size()*10));
+			    ((Vector<SinOsc>)Oscs.get(b)).get(4).play(110/(1.0f+abs(pow(numbers.get(b),4.0f))),(float)1.0f/(float)(numbers.size()*13));
+			    ((Vector<SinOsc>)Oscs.get(b)).get(5).play(110*(1.0f+abs(pow(numbers.get(b),0.5f))),(float)1.0f/(float)(numbers.size()*10));
+			    //((Vector<SinOsc>)Oscs.get(b)).get(6).play(110*(1.0f+abs(pow(numbers.get(b),.333f))),(float)1.0f/(float)(numbers.size()*12));
+			    //((Vector<SinOsc>)Oscs.get(b)).get(7).play(110*(1.0f+abs(pow(numbers.get(b),0.25f))),(float)1.0f/(float)(numbers.size()*13));
 			    //interpreter.objects.get(b).shape = createShape();
 			}
 			done=true;
@@ -189,15 +189,15 @@ public class UI_Main extends PApplet{
 						interpreter.instruments.get(i).trigger = (float) millis() + (1000.0f*time);
 
 					    //System.out.println(interpreter.instruments.get(i).sequence.get(note.get(i).intValue() ));
-						//((Vector<Pulse>)Oscs.get(i)).get(0).stop();
-						((Vector<Pulse>)Oscs.get(i)).get(0).set(noteFreq,(float)1.0f/(float)(numbers.size()*2),0,0);
-						((Vector<Pulse>)Oscs.get(i)).get(1).set(noteFreq/(numbers.get(i)),(float)1.0f/(float)(numbers.size()*6),0,0);
-					    ((Vector<Pulse>)Oscs.get(i)).get(2).set(noteFreq/(1.0f+abs(pow(numbers.get(i),2.0f))),(float)1.0f/(float)(numbers.size()*8),0,0);
-					    ((Vector<Pulse>)Oscs.get(i)).get(3).set(noteFreq/(1.0f+abs(pow(numbers.get(i),2.0f))),(float)1.0f/(float)(numbers.size()*11),0,0);
-					    ((Vector<Pulse>)Oscs.get(i)).get(4).set(noteFreq/(1.0f+abs(pow(numbers.get(i),4.0f))),(float)1.0f/(float)(numbers.size()*11.5),0,0);
-					    ((Vector<Pulse>)Oscs.get(i)).get(5).set(noteFreq/(1.0f+abs(pow(numbers.get(i),5.0f))),(float)1.0f/(float)(numbers.size()*11.75f),0,0);
-					    //((Vector<Pulse>)Oscs.get(i)).get(6).set(noteFreq/(1.0f+abs(pow(numbers.get(i),6.0f))),(float)1.0f/(float)(numbers.size()*11.75),0,0);
-					    //((Vector<Pulse>)Oscs.get(i)).get(7).set(noteFreq/(1.0f+abs(pow(numbers.get(i),7.0f))),(float)1.0f/(float)(numbers.size()*11.8725),0,0);
+						//((Vector<SinOsc>)Oscs.get(i)).get(0).stop();
+						((Vector<SinOsc>)Oscs.get(i)).get(0).set(noteFreq,(float)1.0f/(float)(numbers.size()*2),0,0);
+						((Vector<SinOsc>)Oscs.get(i)).get(1).set(noteFreq/(numbers.get(i)),(float)1.0f/(float)(numbers.size()*6),0,0);
+					    ((Vector<SinOsc>)Oscs.get(i)).get(2).set(noteFreq/(1.0f+abs(pow(numbers.get(i),2.0f))),(float)1.0f/(float)(numbers.size()*8),0,0);
+					    ((Vector<SinOsc>)Oscs.get(i)).get(3).set(noteFreq/(1.0f+abs(pow(numbers.get(i),2.0f))),(float)1.0f/(float)(numbers.size()*11),0,0);
+					    ((Vector<SinOsc>)Oscs.get(i)).get(4).set(noteFreq/(1.0f+abs(pow(numbers.get(i),4.0f))),(float)1.0f/(float)(numbers.size()*11.5),0,0);
+					    ((Vector<SinOsc>)Oscs.get(i)).get(5).set(noteFreq/(1.0f+abs(pow(numbers.get(i),5.0f))),(float)1.0f/(float)(numbers.size()*11.75f),0,0);
+					    //((Vector<SinOsc>)Oscs.get(i)).get(6).set(noteFreq/(1.0f+abs(pow(numbers.get(i),6.0f))),(float)1.0f/(float)(numbers.size()*11.75),0,0);
+					    //((Vector<SinOsc>)Oscs.get(i)).get(7).set(noteFreq/(1.0f+abs(pow(numbers.get(i),7.0f))),(float)1.0f/(float)(numbers.size()*11.8725),0,0);
 					   
 					   
 					    
@@ -216,7 +216,7 @@ public class UI_Main extends PApplet{
 						    	if(interpreter.instruments.get(b).interval <=0) {
 						    		interpreter.instruments.get(b).playMusic(numbers);
 						    	}
-				    			interpreter.objects.get(b).mode = rand.nextInt(8);
+				    			interpreter.objects.get(b).mode = rand.nextInt(12);
 				    			interpreter.objects.get(b).assignOffset();
 					    	}
 		    		 }

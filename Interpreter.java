@@ -30,7 +30,7 @@ public class Interpreter {
 		for(int i = 0; i<numbers.size(); i++) {
 			objects.add(i,new GeometricObject());
 			objects.get(i).numberAssigned = numbers.get(i);
-			objects.get(i).mode = rand.nextInt(8);
+			objects.get(i).mode = rand.nextInt(11);
 			objects.get(i).interval = numbers.get(rand.nextInt(numbers.size()));
 			objects.get(i).assignOffset();
 			instruments.add(i,new MusicGenerator());
