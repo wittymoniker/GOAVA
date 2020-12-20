@@ -81,7 +81,7 @@ public class UI_Main extends PApplet{
 				((Vector<SinOsc>)Oscs.get(b)).add(new SinOsc(this));
 				((Vector<SinOsc>)Oscs.get(b)).add(new SinOsc(this));
 				((Vector<SinOsc>)Oscs.get(b)).add(new SinOsc(this));
-				((Vector<SinOsc>)Oscs.get(b)).add(new SinOsc(this));
+				//((Vector<SinOsc>)Oscs.get(b)).add(new SinOsc(this));
 				//((Vector<SinOsc>)Oscs.get(b)).add(new SinOsc(this));
 				//((Vector<SinOsc>)Oscs.get(b)).add(new SinOsc(this));
 				note.add((int)1);
@@ -99,7 +99,7 @@ public class UI_Main extends PApplet{
 			    ((Vector<SinOsc>)Oscs.get(b)).get(2).play(110/(1.0f+abs(pow(numbers.get(b),2.0f))),(float)1.0f/(float)(numbers.size()*10));
 			    ((Vector<SinOsc>)Oscs.get(b)).get(3).play(110/(1.0f+abs(pow(numbers.get(b),3.0f))),(float)1.0f/(float)(numbers.size()*10));
 			    ((Vector<SinOsc>)Oscs.get(b)).get(4).play(110/(1.0f+abs(pow(numbers.get(b),4.0f))),(float)1.0f/(float)(numbers.size()*13));
-			    ((Vector<SinOsc>)Oscs.get(b)).get(5).play(110*(1.0f+abs(pow(numbers.get(b),0.5f))),(float)1.0f/(float)(numbers.size()*10));
+			   // ((Vector<SinOsc>)Oscs.get(b)).get(5).play(110*(1.0f+abs(pow(numbers.get(b),0.5f))),(float)1.0f/(float)(numbers.size()*10));
 			    //((Vector<SinOsc>)Oscs.get(b)).get(6).play(110*(1.0f+abs(pow(numbers.get(b),.333f))),(float)1.0f/(float)(numbers.size()*12));
 			    //((Vector<SinOsc>)Oscs.get(b)).get(7).play(110*(1.0f+abs(pow(numbers.get(b),0.25f))),(float)1.0f/(float)(numbers.size()*13));
 			    //interpreter.objects.get(b).shape = createShape();
@@ -195,7 +195,7 @@ public class UI_Main extends PApplet{
 					    ((Vector<SinOsc>)Oscs.get(i)).get(2).set(noteFreq/(1.0f+abs(pow(numbers.get(i),2.0f))),(float)1.0f/(float)(numbers.size()*8),0,0);
 					    ((Vector<SinOsc>)Oscs.get(i)).get(3).set(noteFreq/(1.0f+abs(pow(numbers.get(i),2.0f))),(float)1.0f/(float)(numbers.size()*11),0,0);
 					    ((Vector<SinOsc>)Oscs.get(i)).get(4).set(noteFreq/(1.0f+abs(pow(numbers.get(i),4.0f))),(float)1.0f/(float)(numbers.size()*11.5),0,0);
-					    ((Vector<SinOsc>)Oscs.get(i)).get(5).set(noteFreq/(1.0f+abs(pow(numbers.get(i),5.0f))),(float)1.0f/(float)(numbers.size()*11.75f),0,0);
+					   // ((Vector<SinOsc>)Oscs.get(i)).get(5).set(noteFreq/(1.0f+abs(pow(numbers.get(i),5.0f))),(float)1.0f/(float)(numbers.size()*11.75f),0,0);
 					    //((Vector<SinOsc>)Oscs.get(i)).get(6).set(noteFreq/(1.0f+abs(pow(numbers.get(i),6.0f))),(float)1.0f/(float)(numbers.size()*11.75),0,0);
 					    //((Vector<SinOsc>)Oscs.get(i)).get(7).set(noteFreq/(1.0f+abs(pow(numbers.get(i),7.0f))),(float)1.0f/(float)(numbers.size()*11.8725),0,0);
 					   

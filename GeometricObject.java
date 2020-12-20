@@ -41,13 +41,13 @@ public class GeometricObject {
 		}
 		if(mode == 1) {//draw number shape ceil verts
 			for(int i = 0; i<(int)Math.ceil((double)numberAssigned);i++) {
-				 shape.vertex(osX-(float)Math.cos(3.14159*2.0*((i)/numberAssigned))*100*numberAssigned,osY-(float)Math.sin(3.14159*2.0*((i)/numberAssigned))*100*numberAssigned);
+				 shape.vertex(osX-(float)Math.cos(3.14159*2.0*((i)/numberAssigned))*45*numberAssigned,osY-(float)Math.sin(3.14159*2.0*((i)/numberAssigned))*45*numberAssigned);
 				 
 			 }
 		}
 		if(mode == 2) {//draw number shape floor verts
 			for(int i = 0; i<(int)Math.floor((double)numberAssigned);i++) {
-				 shape.vertex(osX-(float)Math.cos(3.14159*2.0*((i)/numberAssigned))*100*numberAssigned,osY-(float)Math.sin(3.14159*2.0*((i)/numberAssigned))*100*numberAssigned);
+				 shape.vertex(osX-(float)Math.cos(3.14159*2.0*((i)/numberAssigned))*45*numberAssigned,osY-(float)Math.sin(3.14159*2.0*((i)/numberAssigned))*45*numberAssigned);
 				 
 			 }
 		}
@@ -72,13 +72,13 @@ public class GeometricObject {
 		}
 		if(mode == 5) {//draw number shape ceil verts
 			for(int i = 0; i<(int)Math.ceil((double)numberAssigned);i++) {
-				 shape.vertex(osX-(float)Math.cos(3.14159*2.0*((i)/numberAssigned))*100*numberAssigned,osY-(float)Math.sin(3.14159*2.0*((i)/numberAssigned))*100*numberAssigned,(float)Math.atan(((i+1.0f)/numberAssigned))*numberAssigned*50);
+				 shape.vertex(osX-(float)Math.cos(3.14159*2.0*((i)/numberAssigned))*45*numberAssigned,osY-(float)Math.sin(3.14159*2.0*((i)/numberAssigned))*45*numberAssigned,(float)Math.atan(((i+1.0f)/numberAssigned))*numberAssigned*50);
 				 
 			 }
 		}
 		if(mode == 6) {//draw number shape floor verts
 			for(int i = 0; i<(int)Math.floor((double)numberAssigned);i++) {
-				 shape.vertex(osX-(float)Math.cos(3.14159*2.0*((i)/numberAssigned))*100*numberAssigned,osY-(float)Math.sin(3.14159*2.0*((i)/numberAssigned))*100*numberAssigned,(float)Math.atan(((i+1.0f)/numberAssigned))*numberAssigned*50);
+				 shape.vertex(osX-(float)Math.cos(3.14159*2.0*((i)/numberAssigned))*45*numberAssigned,osY-(float)Math.sin(3.14159*2.0*((i)/numberAssigned))*45*numberAssigned,(float)Math.atan(((i+1.0f)/numberAssigned))*numberAssigned*50);
 				 
 			 }
 		}
@@ -92,25 +92,25 @@ public class GeometricObject {
 		}
 		if(mode == 8) {//draw number shape ceil verts
 			for(int i = 0; i<numbers.size();i++) {
-				 shape.vertex(osX-(float)Math.cos(3.14159*2.0*((i)/numberAssigned))*100*numberAssigned,osY-(float)Math.sin(3.14159*2.0*((i)/numberAssigned))*100*numberAssigned);
+				 shape.vertex(osX-(float)Math.cos(3.14159*2.0*((i)/numberAssigned))*45*numberAssigned,osY-(float)Math.sin(3.14159*2.0*((i)/numberAssigned))*45*numberAssigned);
 				 
 			 }
 		}
 		if(mode == 9) {//draw number shape floor verts
 			for(int i = 0;  i<numbers.size();i++) {
-				 shape.vertex(osX-(float)Math.cos(3.14159*2.0*((i)/numberAssigned))*100*numberAssigned,osY-(float)Math.sin(3.14159*2.0*((i)/numberAssigned))*100*numberAssigned);
+				 shape.vertex(osX-(float)Math.cos(3.14159*2.0*((i)/numberAssigned))*45*numberAssigned,osY-(float)Math.sin(3.14159*2.0*((i)/numberAssigned))*45*numberAssigned);
 				 
 			 }
 		}
 		if(mode == 10) {//draw number shape ceil verts
 			for(int i = 0;  i<numbers.size();i++) {
-				 shape.vertex(osX-(float)Math.cos(3.14159*2.0*((i)/numberAssigned))*100*numberAssigned,osY-(float)Math.sin(3.14159*2.0*((i)/numberAssigned))*100*numberAssigned,(float)Math.atan(((i+1.0f)/numberAssigned))*numberAssigned*50);
+				 shape.vertex(osX-(float)Math.cos(3.14159*2.0*((i)/numberAssigned))*45*numberAssigned,osY-(float)Math.sin(3.14159*2.0*((i)/numberAssigned))*45*numberAssigned,(float)Math.atan(((i+1.0f)/numberAssigned))*numberAssigned*50);
 				 
 			 }
 		}
 		if(mode == 11) {//draw number shape floor verts
 			for(int i = 0;  i<numbers.size();i++) {
-				 shape.vertex(osX-(float)Math.cos(3.14159*2.0*((i)/numberAssigned))*100*numberAssigned,osY-(float)Math.sin(3.14159*2.0*((i)/numberAssigned))*100*numberAssigned,(float)Math.atan(((i+1.0f)/numberAssigned))*numberAssigned*50);
+				 shape.vertex(osX-(float)Math.cos(3.14159*2.0*((i)/numberAssigned))*45*numberAssigned,osY-(float)Math.sin(3.14159*2.0*((i)/numberAssigned))*45*numberAssigned,(float)Math.atan(((i+1.0f)/numberAssigned))*numberAssigned*50);
 				 
 			 }
 		}
