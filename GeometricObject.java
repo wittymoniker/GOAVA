@@ -33,8 +33,8 @@ public class GeometricObject {
 			  
 			 for(int i = 0; i<numbers.size();i++) {
 				 shape.vertex(osX-50*numbers.get(i)*(float)Math.sin(3.14159*2.0*numbers.get(i)),osY-50*numbers.get(i)*(float)Math.cos(3.14159*2.0*numbers.get(i)));
-				 shape.vertex(osX-50*numbers.get(i)*(float)Math.acos(3.14159*2.0*Math.sin(3.14159*2.0*numbers.get(i))),osY-50*numbers.get(i));
-				 shape.vertex(osX-50*numbers.get(i)*(float)Math.cos(3.14159*2.0*numbers.get(i)),osY-50*numbers.get(i)*(float)Math.acos(3.14159*2.0*Math.sin(numbers.get(i))));
+				 shape.vertex(osX-50*numbers.get(i)*(float)Math.sin(3.14159*2.0*Math.sin(3.14159*2.0*numbers.get(i))),osY-50*numbers.get(i));
+				 shape.vertex(osX-50*numbers.get(i)*(float)Math.cos(3.14159*2.0*numbers.get(i)),osY-50*numbers.get(i)*(float)Math.sin(3.14159*2.0*Math.sin(numbers.get(i))));
 			 }
 			 
 			  
@@ -54,8 +54,8 @@ public class GeometricObject {
 		if(mode == 3) {//draw all numbers randomize
 			for(int i = 0; i<numbers.size();i++) {
 				
-				 shape.vertex(osX-(float)Math.cos(3.14159*2.0*numbers.get(i))*numbers.get(i)*50,osY-(float)Math.acos(3.14159*2.0*Math.sin(3.14159*2.0*numbers.get(i)))*numbers.get(i)*50);
-				 shape.vertex(osX-0,osY-(float)Math.acos(3.14159*2.0*Math.sin(numbers.get(i)))*numbers.get(i)*50);
+				 shape.vertex(osX-(float)Math.cos(3.14159*2.0*numbers.get(i))*numbers.get(i)*50,osY-(float)Math.sin(3.14159*2.0*Math.sin(3.14159*2.0*numbers.get(i)))*numbers.get(i)*50);
+				 shape.vertex(osX-0,osY-(float)Math.sin(3.14159*2.0*Math.sin(numbers.get(i)))*numbers.get(i)*50);
 				 shape.vertex(osX-(float)Math.sin(3.14159*2.0*numbers.get(i))*numbers.get(i)*(float)Math.cos(3.14159*2.0*numbers.get(i))*50,osY-0);
 			 }
 			 
@@ -63,30 +63,30 @@ public class GeometricObject {
 		if(mode == 4) {//draw all numbers complex
 			  
 			 for(int i = 0; i<numbers.size();i++) {
-				 shape.vertex(osX-50*numbers.get(i)*(float)Math.sin(3.14159*2.0*numbers.get(i)),osY-50*numbers.get(i)*(float)Math.cos(3.14159*2.0*numbers.get(i)),50*numbers.get(i)*(float)Math.acos(3.14159*2.0*Math.sin(3.14159*2.0*numbers.get(i))));
-				 shape.vertex(osX-50*numbers.get(i)*(float)Math.acos(3.14159*2.0*Math.sin(3.14159*2.0*numbers.get(i))),osY-50*numbers.get(i)*(float)Math.sin(3.14159*2.0*numbers.get(i)),50*numbers.get(i)*(float)Math.cos(3.14159*2.0*numbers.get(i)));
-				 shape.vertex(osX-50*numbers.get(i)*(float)Math.cos(3.14159*2.0*numbers.get(i)),osY-50*numbers.get(i)*(float)Math.acos(3.14159*2.0*Math.sin(3.14159*2.0*numbers.get(i))),50*numbers.get(i)*(float)Math.sin(3.14159*2.0*numbers.get(i)));
+				 shape.vertex(osX-50*numbers.get(i)*(float)Math.sin(3.14159*2.0*numbers.get(i)),osY-50*numbers.get(i)*(float)Math.cos(3.14159*2.0*numbers.get(i)),50*numbers.get(i)*(float)Math.sin(3.14159*2.0*Math.sin(3.14159*2.0*numbers.get(i))));
+				 shape.vertex(osX-50*numbers.get(i)*(float)Math.sin(3.14159*2.0*Math.sin(3.14159*2.0*numbers.get(i))),osY-50*numbers.get(i)*(float)Math.sin(3.14159*2.0*numbers.get(i)),50*numbers.get(i)*(float)Math.cos(3.14159*2.0*numbers.get(i)));
+				 shape.vertex(osX-50*numbers.get(i)*(float)Math.cos(3.14159*2.0*numbers.get(i)),osY-50*numbers.get(i)*(float)Math.sin(3.14159*2.0*Math.sin(3.14159*2.0*numbers.get(i))),50*numbers.get(i)*(float)Math.sin(3.14159*2.0*numbers.get(i)));
 			 }
 			 
 			  
 		}
 		if(mode == 5) {//draw number shape ceil verts
 			for(int i = 0; i<(int)Math.ceil((double)numberAssigned);i++) {
-				 shape.vertex(osX-(float)Math.cos(3.14159*2.0*((i)/numberAssigned))*45*numberAssigned,osY-(float)Math.sin(3.14159*2.0*((i)/numberAssigned))*45*numberAssigned,(float)Math.atan(((i+1.0f)/numberAssigned))*numberAssigned*50);
+				 shape.vertex(osX-(float)Math.cos(3.14159*2.0*((i)/numberAssigned))*45*numberAssigned,osY-(float)Math.sin(3.14159*2.0*((i)/numberAssigned))*45*numberAssigned,(float)Math.sin(((i+1.0f)/numberAssigned))*numberAssigned*50);
 				 
 			 }
 		}
 		if(mode == 6) {//draw number shape floor verts
 			for(int i = 0; i<(int)Math.floor((double)numberAssigned);i++) {
-				 shape.vertex(osX-(float)Math.cos(3.14159*2.0*((i)/numberAssigned))*45*numberAssigned,osY-(float)Math.sin(3.14159*2.0*((i)/numberAssigned))*45*numberAssigned,(float)Math.atan(((i+1.0f)/numberAssigned))*numberAssigned*50);
+				 shape.vertex(osX-(float)Math.cos(3.14159*2.0*((i)/numberAssigned))*45*numberAssigned,osY-(float)Math.sin(3.14159*2.0*((i)/numberAssigned))*45*numberAssigned,(float)Math.sin(((i+1.0f)/numberAssigned))*numberAssigned*50);
 				 
 			 }
 		}
 		if(mode == 7) {//draw all numbers randomize
 			for(int i = 0; i<numbers.size();i++) {
-				shape.vertex(osX-50*numbers.get(i),osY-50*numbers.get(i)*(float)Math.cos(3.14159*2.0*numbers.get(i)),50*numbers.get(i)*(float)Math.acos(3.14159*2.0*Math.sin(3.14159*2.0*numbers.get(i))));
-				shape.vertex(osX-50*numbers.get(i)*(float)Math.acos(3.14159*2.0*Math.sin(3.14159*2.0*numbers.get(i))),osY-50*numbers.get(i),50*numbers.get(i)*(float)Math.cos(numbers.get(i)));
-				shape.vertex(osX-50*numbers.get(i)*(float)Math.cos(3.14159*2.0*numbers.get(i)),osY-50*numbers.get(i)*(float)Math.acos(3.14159*2.0*Math.sin(3.14159*2.0*numbers.get(i))),50*numbers.get(i));
+				shape.vertex(osX-50*numbers.get(i),osY-50*numbers.get(i)*(float)Math.cos(3.14159*2.0*numbers.get(i)),50*numbers.get(i)*(float)Math.sin(3.14159*2.0*Math.sin(3.14159*2.0*numbers.get(i))));
+				shape.vertex(osX-50*numbers.get(i)*(float)Math.sin(3.14159*2.0*Math.sin(3.14159*2.0*numbers.get(i))),osY-50*numbers.get(i),50*numbers.get(i)*(float)Math.cos(numbers.get(i)));
+				shape.vertex(osX-50*numbers.get(i)*(float)Math.cos(3.14159*2.0*numbers.get(i)),osY-50*numbers.get(i)*(float)Math.sin(3.14159*2.0*Math.sin(3.14159*2.0*numbers.get(i))),50*numbers.get(i));
 			}
 			 
 		}
@@ -104,13 +104,13 @@ public class GeometricObject {
 		}
 		if(mode == 10) {//draw number shape ceil verts
 			for(int i = 0;  i<numbers.size();i++) {
-				 shape.vertex(osX-(float)Math.cos(3.14159*2.0*((i)/numberAssigned))*45*numberAssigned,osY-(float)Math.sin(3.14159*2.0*((i)/numberAssigned))*45*numberAssigned,(float)Math.atan(((i+1.0f)/numberAssigned))*numberAssigned*50);
+				 shape.vertex(osX-(float)Math.cos(3.14159*2.0*((i)/numberAssigned))*45*numberAssigned,osY-(float)Math.sin(3.14159*2.0*((i)/numberAssigned))*45*numberAssigned,(float)Math.sin(((i+1.0f)/numberAssigned))*numberAssigned*50);
 				 
 			 }
 		}
 		if(mode == 11) {//draw number shape floor verts
 			for(int i = 0;  i<numbers.size();i++) {
-				 shape.vertex(osX-(float)Math.cos(3.14159*2.0*((i)/numberAssigned))*45*numberAssigned,osY-(float)Math.sin(3.14159*2.0*((i)/numberAssigned))*45*numberAssigned,(float)Math.atan(((i+1.0f)/numberAssigned))*numberAssigned*50);
+				 shape.vertex(osX-(float)Math.cos(3.14159*2.0*((i)/numberAssigned))*45*numberAssigned,osY-(float)Math.sin(3.14159*2.0*((i)/numberAssigned))*45*numberAssigned,(float)Math.sin(((i+1.0f)/numberAssigned))*numberAssigned*50);
 				 
 			 }
 		}
