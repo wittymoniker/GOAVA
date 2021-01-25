@@ -1,11 +1,16 @@
 import processing.core.PApplet;
 import java.util.Scanner;
 import java.util.Vector;
+
+import javax.swing.JOptionPane;
+
 import processing.sound.*;
 
 import java.util.Random;
 import java.io.Reader; 
-
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 
 
@@ -17,19 +22,45 @@ public class UI_Main extends PApplet{
 	}
 	float time =1.0f;
 	Interpreter interpreter = new Interpreter();
+	String Input[] = null;
 	public void init() {
-		Scanner reader = new Scanner(System.in);  // Reading from System.in
-		System.out.println("Enter how many numbers you wish to include: ");
-		int n = reader.nextInt(); // Scans the next token of the input as an int.
+		//Scanner reader = new Scanner(System.in);  // Reading from System.in
+		//System.out.println("Enter how many numbers you wish to include: ");
+		//int n = reader.nextInt(); // Scans the next token of the input as an int.
 		//once finished
-		System.out.println("Enter time in seconds for a step(your numbers can now be decimals): ");
-		time = reader.nextFloat();
-		
+		//System.out.println("Enter time in seconds for a step(your numbers can now be decimals): ");
+		//time = reader.nextFloat();
+		String sn = (String)JOptionPane.showInputDialog(
+                null,
+                "Pick how many numbers you want to use:\n",
+                "Customized Dialog",
+                JOptionPane.PLAIN_MESSAGE,
+                null,
+                Input,
+                "6");
+		int n = (int)Float.parseFloat(sn);
+		String stempo = (String)JOptionPane.showInputDialog(
+                null,
+                "Pick the tempo you want to use \n (time in seconds per step):\n",
+                "Customized Dialog",
+                JOptionPane.PLAIN_MESSAGE,
+                null,
+                Input,
+                "1.0");
+		time = Float.parseFloat(stempo);
 		for(int i=0; i<n; i++) {
-			System.out.println("Enter a number for up to "+(i+1)+"/"+n+": ");
-			Float x  = reader.nextFloat(); // Scans the next token of the input as an int.
+			//System.out.println("Enter a number for up to "+(i+1)+"/"+n+": ");
+			String num = (String)JOptionPane.showInputDialog(
+	                null,
+	                ("Enter a number for up to "+(i+1)+"/"+n+":"),
+	                "Customized Dialog",
+	                JOptionPane.PLAIN_MESSAGE,
+	                null,
+	                Input,
+	                "0.0");
+			//Float x  = reader.nextFloat(); // Scans the next token of the input as an int.
 			//once finished
-			numbers.add(x);
+			numbers.add(Float.parseFloat(num));
 		}
 		for(int i=0; i<n; i++) {
 			System.out.println(numbers.get(i));
@@ -42,7 +73,7 @@ public class UI_Main extends PApplet{
 		    //SinOscs[i].amp((float)1/(float)numbers.size());
 		    //SinOscs[i].freq((float) Interpreter.instruments.get(i).sequence[0]);
 		}
-		reader.close();
+		//reader.close();
 	}
 	public void settings(){
 		size(2046, 1024, P3D);
