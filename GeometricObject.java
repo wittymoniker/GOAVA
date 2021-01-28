@@ -41,22 +41,22 @@ public class GeometricObject {
 		}
 		if(mode == 1) {//draw number shape ceil verts
 			for(int i = 0; i<(int)Math.ceil((double)numberAssigned);i++) {
-				 shape.vertex(osX-(float)Math.cos(3.14159*((i)/numberAssigned))*119*numberAssigned,osY-(float)Math.sin(3.14159*((i)/numberAssigned))*119*numberAssigned);
+				 shape.vertex(osX-(float)Math.cos(3.14159*((i)/numberAssigned))*numbers.size()*numberAssigned,osY-(float)Math.sin(3.14159*((i)/numberAssigned))*numbers.size()*numberAssigned);
 				 
 			 }
 		}
 		if(mode == 2) {//draw number shape floor verts
 			for(int i = 0; i<(int)Math.floor((double)numberAssigned);i++) {
-				 shape.vertex(osX-(float)Math.cos(3.14159*((i)/numberAssigned))*119*numberAssigned,osY-(float)Math.sin(3.14159*((i)/numberAssigned))*119*numberAssigned);
+				 shape.vertex(osX-(float)Math.cos(3.14159*((i)/numberAssigned))*numbers.size()*numberAssigned,osY-(float)Math.sin(3.14159*((i)/numberAssigned))*numbers.size()*numberAssigned);
 				 
 			 }
 		}
 		if(mode == 3) {//draw all numbers randomize
 			for(int i = 0; i<numbers.size();i++) {
 				
-				 shape.vertex(osX-(float)Math.cos(3.14159*numbers.get(i))*numbers.get(i)*119,osY-(float)Math.sin(3.14159*Math.sin(3.14159*numbers.get(i)))*numbers.get(i)*119);
-				 shape.vertex(osX-0,osY-(float)Math.sin(3.14159*Math.sin(numbers.get(i)))*numbers.get(i)*119);
-				 shape.vertex(osX-(float)Math.sin(3.14159*numbers.get(i))*numbers.get(i)*(float)Math.cos(3.14159*numbers.get(i))*119,osY-0);
+				 shape.vertex(osX-(float)Math.cos(3.14159*numbers.get(i))*numbers.get(i)*numbers.size(),osY-(float)Math.sin(3.14159*Math.sin(3.14159*numbers.get(i)))*numbers.get(i)*(numbers.size()-1));
+				 shape.vertex(osX-0,osY-(float)Math.sin(3.14159*Math.sin(numbers.get(i)))*numbers.get(i)*(numbers.size()-1));
+				 shape.vertex(osX-(float)Math.sin(3.14159*numbers.get(i))*numbers.get(i)*(float)Math.cos(3.14159*numbers.get(i))*numbers.size(),osY-0);
 			 }
 			 
 		}
@@ -72,13 +72,13 @@ public class GeometricObject {
 		}
 		if(mode == 5) {//draw number shape ceil verts
 			for(int i = 0; i<(int)Math.ceil((double)numberAssigned);i++) {
-				 shape.vertex(osX-(float)Math.cos(3.14159*((i)/numberAssigned))*119*numberAssigned,osY-(float)Math.sin(3.14159*((i)/numberAssigned))*119*numberAssigned,(float)Math.sin(((i+1.0f)/numberAssigned))*numberAssigned*119);
+				 shape.vertex(osX-(float)Math.cos(3.14159*((i)/numberAssigned))*numbers.size()*numberAssigned,osY-(float)Math.sin(3.14159*((i)/numberAssigned))*numbers.size()*numberAssigned,(float)Math.sin(((i+1.0f)/numberAssigned))*numberAssigned*(numbers.size()-1));
 				 
 			 }
 		}
 		if(mode == 6) {//draw number shape floor verts
 			for(int i = 0; i<(int)Math.floor((double)numberAssigned);i++) {
-				 shape.vertex(osX-(float)Math.cos(3.14159*((i)/numberAssigned))*119*numberAssigned,osY-(float)Math.sin(3.14159*((i)/numberAssigned))*119*numberAssigned,(float)Math.sin(((i+1.0f)/numberAssigned))*numberAssigned*119);
+				 shape.vertex(osX-(float)Math.cos(3.14159*((i)/numberAssigned))*numbers.size()*numberAssigned,osY-(float)Math.sin(3.14159*((i)/numberAssigned))*numbers.size()*numberAssigned,(float)Math.sin(((i+1.0f)/numberAssigned))*numberAssigned*(numbers.size()-1));
 				 
 			 }
 		}
@@ -92,28 +92,498 @@ public class GeometricObject {
 		}
 		if(mode == 8) {//draw number shape ceil verts
 			for(int i = 0; i<numbers.size();i++) {
-				 shape.vertex(osX-(float)Math.cos(3.14159*((i)/numberAssigned))*119*numberAssigned,osY-(float)Math.sin(3.14159*((i)/numberAssigned))*119*numberAssigned);
+				 shape.vertex(osX-(float)Math.cos(3.14159*((i)/numberAssigned))*numbers.size()*numberAssigned,osY-(float)Math.sin(3.14159*((i)/numberAssigned))*numbers.size()*numberAssigned);
 				 
 			 }
 		}
 		if(mode == 9) {//draw number shape floor verts
 			for(int i = 0;  i<numbers.size();i++) {
-				 shape.vertex(osX-(float)Math.cos(3.14159*((i)/numberAssigned))*119*numberAssigned,osY-(float)Math.sin(3.14159*((i)/numberAssigned))*119*numberAssigned);
+				 shape.vertex(osX-(float)Math.cos(3.14159*((i)/numberAssigned))*numbers.size()*numberAssigned,osY-(float)Math.sin(3.14159*((i)/numberAssigned))*numbers.size()*numberAssigned);
 				 
 			 }
 		}
 		if(mode == 10) {//draw number shape ceil verts
 			for(int i = 0;  i<numbers.size();i++) {
-				 shape.vertex(osX-(float)Math.cos(3.14159*((i)/numberAssigned))*119*numberAssigned,osY-(float)Math.sin(3.14159*((i)/numberAssigned))*119*numberAssigned,(float)Math.sin(((i+1.0f)/numberAssigned))*numberAssigned*119);
+				 shape.vertex(osX-(float)Math.cos(3.14159*((i)/numberAssigned))*numbers.size()*numberAssigned,osY-(float)Math.sin(3.14159*((i)/numberAssigned))*numbers.size()*numberAssigned,(float)Math.sin(((i+1.0f)/numberAssigned))*numberAssigned*(numbers.size()-1));
 				 
 			 }
 		}
 		if(mode == 11) {//draw number shape floor verts
 			for(int i = 0;  i<numbers.size();i++) {
-				 shape.vertex(osX-(float)Math.cos(3.14159*((i)/numberAssigned))*119*numberAssigned,osY-(float)Math.sin(3.14159*((i)/numberAssigned))*119*numberAssigned,(float)Math.sin(((i+1.0f)/numberAssigned))*numberAssigned*119);
+				 shape.vertex(osX-(float)Math.cos(3.14159*((i)/numberAssigned))*numbers.size()*numberAssigned,osY-(float)Math.sin(3.14159*((i)/numberAssigned))*numbers.size()*numberAssigned,(float)Math.sin(((i+1.0f)/numberAssigned))*numberAssigned*(numbers.size()-1));
 				 
 			 }
 		}
+		if(mode == 11) {//draw number shape floor verts
+			draw2d(osX,osY,numbers,numbers.size());
+		}
+		if(mode == 12) {//draw number shape floor verts
+			draw2d(osX,osY,numbers,numbers.size());
+		}
+		if(mode == 13) {//draw number shape floor verts
+			draw2d(osX,osY,numbers,numbers.size());
+		}
+		if(mode == 14) {//draw number shape floor verts
+			draw3d(osX,osY,rand.nextFloat()*128,numbers,numbers.size());
+		}
+		if(mode == 15) {//draw number shape floor verts
+			draw3d(osX,osY,rand.nextFloat()*128,numbers,numbers.size());
+		}
+		if(mode == 16) {//draw number shape floor verts
+			draw3d(osX,osY,rand.nextFloat()*128,numbers,numbers.size());
+		}
+		if(mode == 17) {//draw number shape floor verts
+			draw3d(osX,osY,rand.nextFloat()*128,numbers,numbers.size());
+		}
+
+
+	}
+	public void draw2d(float x, float y,Vector<Float> numbers, float i) {
+		
+		int mode = Math.round(rand.nextFloat()*33);
+		//numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))
+		if(mode == 0) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 1) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 2) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 3) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 4) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		
+		
+		
+		if(mode == 5) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 6) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 7) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 8) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 9) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		
+		
+		if(mode == 10) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 11) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 12) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,i),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 13) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 14) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1))),numberAssigned),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 15) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1))),numberAssigned));
+			}
+		}
+		if(mode == 16) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1))),numberAssigned),y+19.75807343f*index(numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1))),numberAssigned));
+			}
+		}
+		
+		//////////////////////////////////////
+		if(mode == 17) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*operate(numberAssigned,i),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 18) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 19) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode ==20) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 21) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		
+		
+		
+		if(mode == 22) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 23) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 24) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 25) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 26) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		
+		
+		if(mode == 27) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 28) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 29) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 30) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 31) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*operate(numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1))),numberAssigned),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 32) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*operate(numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1))),numberAssigned));
+			}
+		}
+		if(mode == 33) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*operate(numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1))),numberAssigned),y+19.75807343f*operate(numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1))),numberAssigned));
+			}
+		}
+		
+		
+		
+		
+		
+		
+	}
+	public void draw3d(float x, float y,float z, Vector<Float>numbers, float i) {
+
+		
+		int mode = Math.round(rand.nextFloat()*33);
+		if(mode == 0) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),z+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 1) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),z+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 2) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),z+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 3) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),z+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 4) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),z+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		
+		
+		
+		if(mode == 5) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),z+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 6) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),z+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 7) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),z+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 8) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),z+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 9) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),z+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		
+		
+		if(mode == 10) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),z+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 11) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),z+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 12) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),z+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 13) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),z+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 14) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1))),numberAssigned),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),z+19.75807343f*index(numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1))),numberAssigned));
+			}
+		}
+		if(mode == 15) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1))),numberAssigned),z+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 16) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1))),numberAssigned),y+19.75807343f*index(numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1))),numberAssigned),z+19.75807343f*index(numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1))),numberAssigned));
+			}
+		}
+		
+		//////////////////////////////////////
+		if(mode == 17) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),z+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 18) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),z+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 19) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),z+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode ==20) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),z+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 21) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),z+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		
+		
+		
+		if(mode == 22) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),z+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 23) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),z+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 24) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),z+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 25) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),z+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 26) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),z+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		
+		
+		if(mode == 27) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),z+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 28) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),z+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 29) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),z+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 30) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*operate(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),z+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 31) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*operate(numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1))),numberAssigned),y+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),z+19.75807343f*operate(numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1))),numberAssigned));
+			}
+		}
+		if(mode == 32) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))),y+19.75807343f*operate(numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1))),numberAssigned),z+19.75807343f*index(numberAssigned,numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1)))));
+			}
+		}
+		if(mode == 33) {
+			for (int j = 0; j<i;j++) {
+				shape.vertex(x+19.75807343f*operate(numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1))),numberAssigned),y+19.75807343f*operate(numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1))),numberAssigned),z+19.75807343f*operate(numbers.get(Math.round(rand.nextFloat()*(numbers.size()-1))),numberAssigned));
+			}
+		}
+		
+		
+	}
+	public float operate(float n,float n2) {
+		int mode = Math.round(rand.nextFloat()*6);
+		if(mode==0) {
+			return (float)Math.pow(n, n2);
+		}
+		if(mode==1) {
+			return n*n2;	
+		}
+		if(mode==2) {
+			return n+n2;
+		}
+		if(mode==3) {
+			return n-n2;
+		}
+		if(mode==4) {
+			return n/n2;
+		}
+		if(mode==5) {
+			return (float)Math.pow(n,1.0d/n2);
+		}
+		if(mode==6) {
+			return n;
+		}
+		return n;
+	}
+	public float index(float n,float n2) {
+		int mode = Math.round(rand.nextFloat()*11);
+		if(mode==0) {
+			return (float)Math.sin(n)*n2;
+		}
+		if(mode==1) {
+			return (float)Math.cos(n)*n2;	
+		}
+		if(mode==2) {
+			return (float)Math.pow(n,1.0d/n2);
+		}
+		if(mode==3) {
+			return (float)Math.pow(1.0d/n2,n);
+		}
+		if(mode==4) {
+			return (float)Math.pow(n, n2);
+		}
+		if(mode==5) {
+			return (float)Math.pow(n2, n);
+		}
+		if(mode==6) {
+			return n*n2;
+		}
+		if(mode==7) {
+			return n/n2;
+		}
+		if(mode==8) {
+			return n2/n;
+		}
+		if(mode==9) {
+			return n*n2;
+		}
+		if(mode==10) {
+			return -(float)Math.sin(n)*n2;
+		}
+		if(mode==11) {
+			return -(float)Math.cos(n)*n2;	
+		}
+		return n;
 
 	}
 }
