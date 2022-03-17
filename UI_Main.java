@@ -254,9 +254,6 @@ public class UI_Main extends PApplet {
 					
 					float noteFreq = (float)interpreter.instruments.get(i).sequence.get(note.get(i).intValue() - 1);
 					if(noteFreq<=0) {
-						noteFreq=numbers.get(i)*1.1975807343f;
-					}
-					if(noteFreq<=0) {
 						noteFreq=16.008f;
 					}
 					interpreter.instruments.get(i).trigger = (float) millis() + (1000.0f * time);
@@ -264,13 +261,13 @@ public class UI_Main extends PApplet {
 					// System.out.println(interpreter.instruments.get(i).sequence.get(note.get(i).intValue()
 					// ));
 					// ((Vector<SinOsc>)Oscs.get(i)).get(0).stop();
-					Oscs.get(i).get(0).set((noteFreq), ((float) 1.0f / (float) (numbers.size() * 4))*(1.0f/(1.0f+((noteFreq/8.0f)/16782.1f)/(((noteFreq/8.0f)/8.0f)/26782.1f))), 0, 0);
-					Oscs.get(i).get(1).set((noteFreq) * ((numbers.get(i)+(1.0f/numbers.get(i)))), ((float) 1.0f / (float) (numbers.size() * 4))*(1.0f/(1.0f+2.0f*((noteFreq/8.0f)/16782.1f)/((noteFreq/8.0f)/26782.1f))), 0,
+					Oscs.get(i).get(0).set(((noteFreq/16.0f)), ((float) 1.0f / (float) (numbers.size() * 4))*(1.0f/(1.0f+(((noteFreq/16.0f))/16782.1f)/((((noteFreq/16.0f))/8.0f)/26782.1f))), 0, 0);
+					Oscs.get(i).get(1).set(((noteFreq/16.0f)) * ((numbers.get(i)+(1.0f/numbers.get(i)))), ((float) 1.0f / (float) (numbers.size() * 4))*(1.0f/(1.0f+2.0f*(((noteFreq/16.0f))/16782.1f)/(((noteFreq/16.0f))/26782.1f))), 0,
 							0);
-					Oscs.get(i).get(2).set((noteFreq) * (Math.abs(pow((numbers.get(i)+(1.0f/numbers.get(i))), 2.0f))),
-							((float) 1.0f / (float) (numbers.size() * 4))*(1.0f/(1.0f+4.0f*((noteFreq/8.0f)/16782.1f)/((noteFreq/8.0f)/26782.1f))), 0, 0);
-					Oscs.get(i).get(3).set((noteFreq) * (Math.abs(pow((numbers.get(i)+(1.0f/numbers.get(i))), 2.0f*(numbers.get(i)+(1.0f/numbers.get(i)))))),
-							((float) 1.0f / (float) (numbers.size() * 4))*(1.0f/(1.0f+8.0f*((noteFreq/8.0f)/16782.1f)/((noteFreq/8.0f)/26782.1f))), 0, 0);
+					Oscs.get(i).get(2).set(((noteFreq/16.0f)) * (Math.abs(pow((numbers.get(i)+(1.0f/numbers.get(i))), 2.0f))),
+							((float) 1.0f / (float) (numbers.size() * 4))*(1.0f/(1.0f+4.0f*(((noteFreq/16.0f))/16782.1f)/(((noteFreq/16.0f))/26782.1f))), 0, 0);
+					Oscs.get(i).get(3).set(((noteFreq/16.0f)) * (Math.abs(pow((numbers.get(i)+(1.0f/numbers.get(i))), 2.0f*(numbers.get(i)+(1.0f/numbers.get(i)))))),
+							((float) 1.0f / (float) (numbers.size() * 4))*(1.0f/(1.0f+8.0f*(((noteFreq/16.0f))/16782.1f)/(((noteFreq/16.0f))/26782.1f))), 0, 0);
 					// ((Vector<SinOsc>)Oscs.get(i)).get(3).set(noteFreq/(abs(pow(numbers.get(i),2.0f))),(float)1.0f/(float)(numbers.size()*11),0,0);
 					// ((Vector<SinOsc>)Oscs.get(i)).get(4).set(noteFreq/(abs(pow(numbers.get(i),4.0f))),(float)1.0f/(float)(numbers.size()*11.5),0,0);
 					// ((Vector<SinOsc>)Oscs.get(i)).get(5).set(noteFreq/(1.0f+abs(pow(numbers.get(i),5.0f))),(float)1.0f/(float)(numbers.size()*11.75f),0,0);
