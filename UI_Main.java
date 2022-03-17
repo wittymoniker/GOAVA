@@ -252,7 +252,7 @@ public class UI_Main extends PApplet {
 
 					// Create the new trigger according to predefined duration
 					
-					float noteFreq = (float)interpreter.instruments.get(i).sequence.get(note.get(i).intValue() - 1);
+					float noteFreq = 16.008f+(float)interpreter.instruments.get(i).sequence.get(note.get(i).intValue() - 1);
 					if(noteFreq<=0) {
 						noteFreq=16.008f;
 					}
