@@ -161,8 +161,8 @@ public class UI_Main extends PApplet {
 			if (interpreter.instruments.get(i).sequence.size() != 0) {
 				int j = rand.nextInt(8);
 
-				translate(128, 768);
-				if (j == 1) {
+				//translate(128, 768);
+				if ((millis() > interpreter.instruments.get(i).trigger) && j == 1) {
 					translate(2046 - 6 * interpreter.instruments.get(i).sequence.get(note.get(i).intValue() - 1) / 100,
 							-1024 + note.get(i).intValue() * 24
 									* interpreter.instruments.get(i).sequence.get(note.get(i).intValue() - 1) / 6000,
@@ -172,7 +172,7 @@ public class UI_Main extends PApplet {
 					rotateY((float) (numbers.get(i) * millis() * 0.001f * time));
 					rotateZ((float) (numbers.get(i) * millis() * 0.001f * time));
 				}
-				if (j == 2) {
+				if ((millis() > interpreter.instruments.get(i).trigger) && j == 2) {
 					translate(
 							2046 - note.get(i).intValue() * 24
 									* interpreter.instruments.get(i).sequence.get(note.get(i).intValue() - 1) / 6000,
@@ -183,7 +183,7 @@ public class UI_Main extends PApplet {
 					rotateY((float) (numbers.get(i) * millis() * 0.001f * time));
 					rotateZ((float) -(numbers.get(i) * millis() * 0.001f * time));
 				}
-				if (j == 3) {
+				if ((millis() > interpreter.instruments.get(i).trigger) && j == 3) {
 					translate(2046 - 6 * interpreter.instruments.get(i).sequence.get(note.get(i).intValue() - 1) / 100,
 							-1024 + note.get(i).intValue() * 24
 									* interpreter.instruments.get(i).sequence.get(note.get(i).intValue() - 1) / 6000,
@@ -193,7 +193,7 @@ public class UI_Main extends PApplet {
 					rotateY((float) -(numbers.get(i) * millis() * 0.001f * time));
 					rotateZ((float) (numbers.get(i) * millis() * 0.001f * time));
 				}
-				if (j == 0) {
+				if ((millis() > interpreter.instruments.get(i).trigger) && j == 0) {
 					translate(
 							2046 - note.get(i).intValue() * 24
 									* interpreter.instruments.get(i).sequence.get(note.get(i).intValue() - 1) / 6000,
@@ -204,7 +204,7 @@ public class UI_Main extends PApplet {
 					rotateY((float) -(numbers.get(i) * millis() * 0.001f * time));
 					rotateZ((float) -(numbers.get(i) * millis() * 0.001f * time));
 				}
-				if (j == 4) {
+				if ((millis() > interpreter.instruments.get(i).trigger) && j == 4) {
 					translate(6 * interpreter.instruments.get(i).sequence.get(note.get(i).intValue() - 1) / 100,
 							-note.get(i).intValue() * 24
 									* interpreter.instruments.get(i).sequence.get(note.get(i).intValue() - 1) / 6000,
@@ -214,7 +214,7 @@ public class UI_Main extends PApplet {
 					rotateY((float) (numbers.get(i) * millis() * 0.001f * time));
 					rotateZ((float) -(numbers.get(i) * millis() * 0.001f * time));
 				}
-				if (j == 5) {
+				if ((millis() > interpreter.instruments.get(i).trigger) && j == 5) {
 					translate(
 							note.get(i).intValue() * 24
 									* interpreter.instruments.get(i).sequence.get(note.get(i).intValue() - 1) / 6000,
@@ -225,7 +225,7 @@ public class UI_Main extends PApplet {
 					rotateY((float) (numbers.get(i) * millis() * 0.001f * time));
 					rotateZ((float) -(numbers.get(i) * millis() * 0.001f * time));
 				}
-				if (j == 6) {
+				if ((millis() > interpreter.instruments.get(i).trigger) && j == 6) {
 					translate(6 * interpreter.instruments.get(i).sequence.get(note.get(i).intValue() - 1) / 100,
 							-note.get(i).intValue() * 24
 									* interpreter.instruments.get(i).sequence.get(note.get(i).intValue() - 1) / 6000,
@@ -235,7 +235,7 @@ public class UI_Main extends PApplet {
 					rotateY((float) -(numbers.get(i) * millis() * 0.001f * time));
 					rotateZ((float) (numbers.get(i) * millis() * 0.001f * time));
 				}
-				if (j == 7) {
+				if ((millis() > interpreter.instruments.get(i).trigger) && j == 7) {
 					translate(
 							note.get(i).intValue() * 24
 									* interpreter.instruments.get(i).sequence.get(note.get(i).intValue() - 1) / 6000,
