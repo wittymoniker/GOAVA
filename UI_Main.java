@@ -6,16 +6,16 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import processing.core.PApplet;
-import processing.sound.SinOsc;
-import processing.sound.SqrOsc;
-import processing.sound.TriOsc;
+import processing.sound.*;
+
+
 
 public class UI_Main extends PApplet {
 	Vector<Float> numbers = new Vector<Float>();
 
 	public static void main(String[] args) {
 		PApplet.main("UI_Main");
-		Thread.currentThread().setPriority((int) (Thread.MAX_PRIORITY * 0.8));
+		Thread.currentThread().setPriority((int) (Thread.MAX_PRIORITY * 1));
 	}
 
 	float time = 1.0f;
@@ -76,13 +76,18 @@ public class UI_Main extends PApplet {
 		init();
 	}
 
-	public Vector<Integer> note = new Vector<Integer>(numbers.size());
-	public Vector<Vector<SinOsc>> Oscs = new Vector<Vector<SinOsc>>();
+
+	
+	
+	
 
 	boolean done = false;
 	Random rand = new Random();
 	int trigger = 0;
-
+	public Reverb reverb;
+	public Vector<Integer> note;
+	public Vector<Vector<SinOsc>> Oscs;
+	public Delay delay;
 	public void draw() {
 		float duration = (int) (1000 * time);
 
@@ -98,11 +103,21 @@ public class UI_Main extends PApplet {
 
 		while (!done) {
 			// frame.setLocation(1024, 128);
+			
+			reverb= new Reverb(this);
+			note= new Vector<Integer>(numbers.size());
+			Oscs= new Vector<Vector<SinOsc>>();
+			delay= new Delay(this);
 			ambientLight(140, 140, 140);
+			
 			for (int b = 0; b < numbers.size(); b++) {
+				
+				
 				// Interpreter.objects.get(i).draw(numbers);
 				interpreter.instruments.get(b).playMusic(numbers);
-				Oscs.add(new Vector<SinOsc>());
+				
+				Oscs.add(new Vector<SinOsc>(4));
+				
 				// ((Vector<SinOsc>)Oscs.get(b)).setSize(8);
 				Oscs.get(b).add(new SinOsc(this));
 				Oscs.get(b).add(new SinOsc(this));
@@ -131,6 +146,14 @@ public class UI_Main extends PApplet {
 						(float) 1.0f / (float) (numbers.size() * 4));
 				Oscs.get(b).get(3).play(110 / (1.0f + abs(pow(numbers.get(b), 2.0f))),
 						(float) 1.0f / (float) (numbers.size() *8));
+				delay.process(Oscs.get(b).get(0));
+				delay.process(Oscs.get(b).get(1));
+				delay.process(Oscs.get(b).get(2));
+				delay.process(Oscs.get(b).get(3));
+				reverb.process(Oscs.get(b).get(0));
+				reverb.process(Oscs.get(b).get(1));
+				reverb.process(Oscs.get(b).get(2));
+				reverb.process(Oscs.get(b).get(3));
 				// ((Vector<SinOsc>)Oscs.get(b)).get(3).play(110/(1.0f+abs(pow(numbers.get(b),3.0f))),(float)1.0f/(float)(numbers.size()*10));
 				// ((Vector<SinOsc>)Oscs.get(b)).get(4).play(110/(1.0f+abs(pow(numbers.get(b),4.0f))),(float)1.0f/(float)(numbers.size()*13));
 				// ((Vector<SinOsc>)Oscs.get(b)).get(5).play(110*(1.0f+abs(pow(numbers.get(b),0.5f))),(float)1.0f/(float)(numbers.size()*10));
@@ -140,6 +163,7 @@ public class UI_Main extends PApplet {
 			}
 			done = true;
 		}
+		
 		if(rand.nextFloat()>=(1.0f/((float)numbers.size()))) {
 		background(0);
 		}
@@ -255,37 +279,56 @@ public class UI_Main extends PApplet {
 						&& (note.get(i).intValue() <= interpreter.instruments.get(i).sequence.size())) {
 
 					// Create the new trigger according to predefined duration
-					if(step>=interpreter.instruments.get(i).sequence.size()||note.get(i).intValue() <= interpreter.instruments.get(i).sequence.size()) {
+					if(step>=interpreter.instruments.get(i).sequence.size()||note.get(i).intValue() >= interpreter.instruments.get(i).sequence.size()) {
 						step=1;
 						note.set(i,1);
 					}
 					float noteFreq = 16.008f+(float)interpreter.instruments.get(i).sequence.get((int)step);
-					step=step+1;
-					note.set(i, note.get(i)+1);
-					if (noteFreq<=0){
-						noteFreq=(16.008f);
+					
+					if (noteFreq <= 0 || noteFreq>=(134279985.0f/(16.008f*1.1975807343f)) ){
+						noteFreq=(float) (Math.abs(noteFreq) + 16.008f + Math.pow((double)Math.abs((float)interpreter.instruments.get(i).sequence.get((int)step)),(double)(1.0f/(2.0f*16.008f))));
 					}
 					System.out.println(noteFreq);
 					interpreter.instruments.get(i).trigger = (float) millis() + (1000.0f * time);
-
 					// System.out.println(interpreter.instruments.get(i).sequence.get(note.get(i).intValue()
 					// ));
 					// ((Vector<SinOsc>)Oscs.get(i)).get(0).stop();
-					Oscs.get(i).get(0).set((float)((noteFreq/16.0f)), ((float) 1.0f / (float) (numbers.size() * 4))*(1.0f/(1.0f+(((noteFreq/16.0f))/16782.1f)/((((noteFreq/16.0f))/8.0f)/26782.1f))), 0, 0);
-					Oscs.get(i).get(1).set((float)((noteFreq/16.0f)) * ((numbers.get(i)+(1.0f/numbers.get(i)))), ((float) 1.0f / (float) (numbers.size() * 4))*(1.0f/(1.0f+2.0f*(((noteFreq/16.0f))/16782.1f)/(((noteFreq/16.0f))/26782.1f))), 0,
-							0);
-					Oscs.get(i).get(2).set((float)((noteFreq/16.0f)) * (Math.abs(pow((numbers.get(i)+(1.0f/numbers.get(i))), 2.0f))),
-							((float) 1.0f / (float) (numbers.size() * 4))*(1.0f/(1.0f+4.0f*(((noteFreq/16.0f))/16782.1f)/(((noteFreq/16.0f))/26782.1f))), 0, 0);
+					Oscs.get(i).get(0).stop();
+					Oscs.get(i).get(1).stop();
+					Oscs.get(i).get(2).stop();
+					Oscs.get(i).get(3).stop();
+					
+					Oscs.get(i).get(0).set((float)((1.1985708343f*1.1985708343f*1.1985708343f*noteFreq/16.0f)), ((float) 4.0f / (float) (numbers.size() * 4))*(1.0f/(1.0f+(((noteFreq/16.0f))/16782.1f)/((((noteFreq/16.0f))/8.0f)/26782.1f))),0,0);
+					Oscs.get(i).get(1).set((float)(1.1985708343f*1.1985708343f*(noteFreq/16.0f)) * ((numbers.get(i)+(1.0f/numbers.get(i)))), ((float) 4.0f / (float) (numbers.size() * 4))*(1.0f/(1.0f+2.0f*(((noteFreq/16.0f))/16782.1f)/(((noteFreq/16.0f))/26782.1f))),0,0);
+					Oscs.get(i).get(2).set((float)((1.1985708343f*noteFreq/16.0f)) * (Math.abs(pow((numbers.get(i)+(1.0f/numbers.get(i))), 2.0f))),
+							((float) 4.0f / (float) (numbers.size() * 4))*(1.0f/(1.0f+4.0f*(((noteFreq/16.0f))/16782.1f)/(((noteFreq/16.0f))/26782.1f))),0,0);
 					Oscs.get(i).get(3).set((float)((noteFreq/16.0f)) * (Math.abs(pow((numbers.get(i)+(1.0f/numbers.get(i))), 2.0f*(numbers.get(i)+(1.0f/numbers.get(i)))))),
-							((float) 1.0f / (float) (numbers.size() * 4))*(1.0f/(1.0f+8.0f*(((noteFreq/16.0f))/16782.1f)/(((noteFreq/16.0f))/26782.1f))), 0, 0);
+							((float) 4.0f / (float) (numbers.size() * 4))*(1.0f/(1.0f+8.0f*(((noteFreq/16.0f))/16782.1f)/(((noteFreq/16.0f))/26782.1f))),0,0);
 					// ((Vector<SinOsc>)Oscs.get(i)).get(3).set(noteFreq/(abs(pow(numbers.get(i),2.0f))),(float)1.0f/(float)(numbers.size()*11),0,0);
 					// ((Vector<SinOsc>)Oscs.get(i)).get(4).set(noteFreq/(abs(pow(numbers.get(i),4.0f))),(float)1.0f/(float)(numbers.size()*11.5),0,0);
 					// ((Vector<SinOsc>)Oscs.get(i)).get(5).set(noteFreq/(1.0f+abs(pow(numbers.get(i),5.0f))),(float)1.0f/(float)(numbers.size()*11.75f),0,0);
 					// ((Vector<SinOsc>)Oscs.get(i)).get(6).set(noteFreq/(1.0f+abs(pow(numbers.get(i),6.0f))),(float)1.0f/(float)(numbers.size()*11.75),0,0);
 					// ((Vector<SinOsc>)Oscs.get(i)).get(7).set(noteFreq/(1.0f+abs(pow(numbers.get(i),7.0f))),(float)1.0f/(float)(numbers.size()*11.8725),0,0);
-
+					Oscs.get(i).get(0).play();
+					Oscs.get(i).get(1).play();
+					Oscs.get(i).get(2).play();
+					Oscs.get(i).get(3).play();
+					reverb.damp(1.0f/(numbers.size()+1.0f+numbers.get((int) Math.floor(Math.random()*(numbers.size())))));
+					reverb.room(1.0f/(numbers.size()+1.0f+numbers.get((int) Math.floor(Math.random()*(numbers.size())))));
+					reverb.wet(1.0f/(numbers.size()+1.0f+numbers.get((int) Math.floor(Math.random()*(numbers.size())))));
+					delay.time(1.0f/(numbers.size()+1.0f+numbers.get((int) Math.floor(Math.random()*(numbers.size())))));
+					delay.feedback(1.0f/(numbers.size()+1.0f+numbers.get((int) Math.floor(Math.random()*(numbers.size())))));
+					delay.process(Oscs.get(i).get(0));
+					delay.process(Oscs.get(i).get(1));
+					delay.process(Oscs.get(i).get(2));
+					delay.process(Oscs.get(i).get(3));
+					reverb.process(Oscs.get(i).get(0));
+					reverb.process(Oscs.get(i).get(1));
+					reverb.process(Oscs.get(i).get(2));
+					reverb.process(Oscs.get(i).get(3));
+					
 					// Advance by one note in the midiSequence;
-					note.set(i, (int) step);
+					
 					/*
 					 * if (note.get(i).intValue()
 					 * ==(interpreter.instruments.get(i).sequence.size())) { note.set(i,0);
@@ -293,6 +336,8 @@ public class UI_Main extends PApplet {
 					 * interpreter.objects.get(i).mode = rand.nextInt(8); duration = (int)
 					 * (10000.0f+ 10000.0f* rand.nextFloat()); }
 					 */
+					step=step+1;
+					note.set(i, note.get(i)+1);
 					if (note.get(i).intValue() > (interpreter.instruments.get(i).sequence.size())) {
 						for (int b = 0; b < numbers.size(); b++) {
 							note.set(b, 1);

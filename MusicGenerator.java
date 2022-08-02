@@ -13,9 +13,9 @@ public class MusicGenerator {
 		Random rand = new Random();
 		Composer comp = new Composer();
 		interval = rand.nextInt(numbers.size())+1;
-		if (rand.nextInt(2) == 1) {
+		/*if (rand.nextInt(2) == 1) {
 			interval = 1.0f - ((1.0f / (((Math.abs(((((((numberAssigned))))))))) + 1.0f)));
-		}
+		}*/
 		if (mode == 0) {// play arpeg numbers multiplying each other
 			float f = (float) numbers.size() * interval;
 			sequence = new Vector<Float>((int) f);
