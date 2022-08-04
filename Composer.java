@@ -5,11 +5,15 @@ public class Composer {
 		float sum=0.0f;
 		//return frequency index
 		for(int i=0;i<numbers.size();i++) {
-			sum += (float)(1.0f+Math.sin(1.0f+3.14159f*((float)(numbers.get(i)*step))))/(2.0f*(float)numbers.size());
+			if(numbers.get(i)!=0) {
+				sum += (float)(1.0f+Math.cos(1.0f+(3.14159f/2.0f)*((float)(numbers.get(i)*step))))/(numbers.size());
+
+			}else {
+			sum += (float)(1.0f+Math.cos(1.0f+step+(3.14159f/2.0f)*((float)(numbers.get(i)*step))))/(numbers.size());
+			}
 		}
-		if(sum==0) {
-			sum =1;
-		}
+		sum = Math.abs(sum);
+		
 		return (float)sum;
 	}
 }
