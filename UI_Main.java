@@ -308,10 +308,10 @@ public class UI_Main extends PApplet {
 					Oscs.get(i).get(2).stop();
 					Oscs.get(i).get(3).stop();*/
 					
-					Oscs.get(i).get(0).set((float)((noteFreq)), ((float) 1.0f / (float) (numbers.size()+4.75f)),0,0);
-					Oscs.get(i).get(1).set((float)((noteFreq/1.1975807343f)), ((float) 0.75f / (float) (numbers.size()+4.75f)),0,0);
-					Oscs.get(i).get(2).set((float)((noteFreq)/1.1975807343f)/1.1975807343f,((float) 0.5f / (float) (numbers.size()+4.75f)),0,0);
-					Oscs.get(i).get(3).set((float)(((noteFreq)/1.1975807343f)/1.1975807343f)/1.1975807343f,((float) 0.25f / (float) (numbers.size()+4.75f)),0,0);
+					Oscs.get(i).get(0).set((float)((noteFreq)), ((float) 0.25f / (float) (numbers.size()+4.75f)),0,0);
+					Oscs.get(i).get(1).set((float)((noteFreq/1.1975807343f)), ((float) 0.5f / (float) (numbers.size()+4.75f)),0,0);
+					Oscs.get(i).get(2).set((float)((noteFreq)/1.1975807343f)/1.1975807343f,((float) 0.75f / (float) (numbers.size()+4.75f)),0,0);
+					Oscs.get(i).get(3).set((float)(((noteFreq)/1.1975807343f)/1.1975807343f)/1.1975807343f,((float) 1.0f / (float) (numbers.size()+4.75f)),0,0);
 					// ((Vector<SinOsc>)Oscs.get(i)).get(3).set(noteFreq/(abs(pow(numbers.get(i),2.0f))),(float)1.0f/(float)(numbers.size()*11),0,0);
 					// ((Vector<SinOsc>)Oscs.get(i)).get(4).set(noteFreq/(abs(pow(numbers.get(i),4.0f))),(float)1.0f/(float)(numbers.size()*11.5),0,0);
 					// ((Vector<SinOsc>)Oscs.get(i)).get(5).set(noteFreq/(1.0f+abs(pow(numbers.get(i),5.0f))),(float)1.0f/(float)(numbers.size()*11.75f),0,0);

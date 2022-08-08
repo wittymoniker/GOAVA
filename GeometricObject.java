@@ -37,13 +37,13 @@ public class GeometricObject {
 		if (mode == 0) {// draw all numbers complex
 
 			for (int i = 0; i < numbers.size(); i++) {
-				shape.vertex(osX - 119 * numbers.get(i) * (float) Math.sin(3.14159 * numbers.get(i)),
-						osY - 119 * numbers.get(i) * (float) Math.cos(3.14159 * numbers.get(i)));
+				shape.vertex(osX - 128.0f * numbers.get(i) * (float) Math.sin(3.14159 * numbers.get(i)),
+						osY - 128.0f * numbers.get(i) * (float) Math.cos(3.14159 * numbers.get(i)));
 				shape.vertex(
-						osX - 119 * numbers.get(i) * (float) Math.sin(3.14159 * Math.sin(3.14159 * numbers.get(i))),
-						osY - 119 * numbers.get(i));
-				shape.vertex(osX - 119 * numbers.get(i) * (float) Math.cos(3.14159 * numbers.get(i)),
-						osY - 119 * numbers.get(i) * (float) Math.sin(3.14159 * Math.sin(numbers.get(i))));
+						osX - 128.0f * numbers.get(i) * (float) Math.sin(3.14159 * Math.sin(3.14159 * numbers.get(i))),
+						osY - 128.0f * numbers.get(i));
+				shape.vertex(osX - 128.0f * numbers.get(i) * (float) Math.cos(3.14159 * numbers.get(i)),
+						osY - 128.0f * numbers.get(i) * (float) Math.sin(3.14159 * Math.sin(numbers.get(i))));
 			}
 
 		}
@@ -77,16 +77,16 @@ public class GeometricObject {
 		if (mode == 4) {// draw all numbers complex
 
 			for (int i = 0; i < numbers.size(); i++) {
-				shape.vertex(osX - 119 * numbers.get(i) * (float) Math.sin(3.14159 * numbers.get(i)),
-						osY - 119 * numbers.get(i) * (float) Math.cos(3.14159 * numbers.get(i)),
-						119 * numbers.get(i) * (float) Math.sin(3.14159 * Math.sin(3.14159 * numbers.get(i))));
+				shape.vertex(osX - 128.0f * numbers.get(i) * (float) Math.sin(3.14159 * numbers.get(i)),
+						osY - 128.0f * numbers.get(i) * (float) Math.cos(3.14159 * numbers.get(i)),
+						128.0f * numbers.get(i) * (float) Math.sin(3.14159 * Math.sin(3.14159 * numbers.get(i))));
 				shape.vertex(
-						osX - 119 * numbers.get(i) * (float) Math.sin(3.14159 * Math.sin(3.14159 * numbers.get(i))),
-						osY - 119 * numbers.get(i) * (float) Math.sin(3.14159 * numbers.get(i)),
-						119 * numbers.get(i) * (float) Math.cos(3.14159 * numbers.get(i)));
-				shape.vertex(osX - 119 * numbers.get(i) * (float) Math.cos(3.14159 * numbers.get(i)),
-						osY - 119 * numbers.get(i) * (float) Math.sin(3.14159 * Math.sin(3.14159 * numbers.get(i))),
-						119 * numbers.get(i) * (float) Math.sin(3.14159 * numbers.get(i)));
+						osX - 128.0f * numbers.get(i) * (float) Math.sin(3.14159 * Math.sin(3.14159 * numbers.get(i))),
+						osY - 128.0f * numbers.get(i) * (float) Math.sin(3.14159 * numbers.get(i)),
+						128.0f * numbers.get(i) * (float) Math.cos(3.14159 * numbers.get(i)));
+				shape.vertex(osX - 128.0f * numbers.get(i) * (float) Math.cos(3.14159 * numbers.get(i)),
+						osY - 128.0f * numbers.get(i) * (float) Math.sin(3.14159 * Math.sin(3.14159 * numbers.get(i))),
+						128.0f * numbers.get(i) * (float) Math.sin(3.14159 * numbers.get(i)));
 			}
 
 		}
@@ -108,15 +108,15 @@ public class GeometricObject {
 		}
 		if (mode == 7) {// draw all numbers randomize
 			for (int i = 0; i < numbers.size(); i++) {
-				shape.vertex(osX - 119 * numbers.get(i),
-						osY - 119 * numbers.get(i) * (float) Math.cos(3.14159 * numbers.get(i)),
-						119 * numbers.get(i) * (float) Math.sin(3.14159 * Math.sin(3.14159 * numbers.get(i))));
+				shape.vertex(osX - 128.0f * numbers.get(i),
+						osY - 128.0f * numbers.get(i) * (float) Math.cos(3.14159 * numbers.get(i)),
+						128.0f * numbers.get(i) * (float) Math.sin(3.14159 * Math.sin(3.14159 * numbers.get(i))));
 				shape.vertex(
-						osX - 119 * numbers.get(i) * (float) Math.sin(3.14159 * Math.sin(3.14159 * numbers.get(i))),
-						osY - 119 * numbers.get(i), 119 * numbers.get(i) * (float) Math.cos(numbers.get(i)));
-				shape.vertex(osX - 119 * numbers.get(i) * (float) Math.cos(3.14159 * numbers.get(i)),
-						osY - 119 * numbers.get(i) * (float) Math.sin(3.14159 * Math.sin(3.14159 * numbers.get(i))),
-						119 * numbers.get(i));
+						osX - 128.0f * numbers.get(i) * (float) Math.sin(3.14159 * Math.sin(3.14159 * numbers.get(i))),
+						osY - 128.0f * numbers.get(i), 128.0f * numbers.get(i) * (float) Math.cos(numbers.get(i)));
+				shape.vertex(osX - 128.0f * numbers.get(i) * (float) Math.cos(3.14159 * numbers.get(i)),
+						osY - 128.0f * numbers.get(i) * (float) Math.sin(3.14159 * Math.sin(3.14159 * numbers.get(i))),
+						128.0f * numbers.get(i));
 			}
 
 		}
