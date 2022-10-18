@@ -14,8 +14,8 @@ public class GeometricObject {
 	int mode2 = Math.round(rand.nextFloat() * 33);
 
 	public void assignOffset() {
-		osX = (rand.nextFloat()-0.25f) * 2048.0f;
-		osY = (rand.nextFloat()-0.25f) * (1024.0f);
+		osX = (rand.nextFloat()) * 2048.0f;
+		osY = (rand.nextFloat()) * (1024.0f);
 	}
 
 	public void draw(Vector<Float> numbers) {
