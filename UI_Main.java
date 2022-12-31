@@ -157,9 +157,9 @@ public class UI_Main extends PApplet {
 			}
 			reverb.damp(1.0f/(numbers.size()+1.0f));
 			reverb.room(1.0f/(numbers.size()+1.0f));
-			reverb.wet(1.0f/(numbers.size()+1.0f));
-			delay.time(time*1.5f/(numbers.size()+1.0f));
-			delay.feedback(0.5f/(numbers.size()+1.0f));
+			reverb.wet(0.16666f/(numbers.size()+1.0f));
+			delay.time(time-time*.1975807343f/(numbers.size()+1.0f));
+			delay.feedback(0.16666f/(numbers.size()+1.0f));
 			done = true;
 		}
 		
