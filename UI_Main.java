@@ -21,7 +21,6 @@ public class UI_Main extends PApplet {
 	float time = 1.0f;
 	Interpreter interpreter = new Interpreter();
 	String Input[] = null;
-	float step=0;
 	JFrame paneInit;
 	public void init() {
 		// Scanner reader = new Scanner(System.in); // Reading from System.in
@@ -148,6 +147,7 @@ public class UI_Main extends PApplet {
 				reverb.process(Oscs.get(b).get(1));
 				reverb.process(Oscs.get(b).get(2));
 				reverb.process(Oscs.get(b).get(3));
+				
 				// ((Vector<SinOsc>)Oscs.get(b)).get(3).play(110/(1.0f+abs(pow(numbers.get(b),3.0f))),(float)1.0f/(float)(numbers.size()*10));
 				// ((Vector<SinOsc>)Oscs.get(b)).get(4).play(110/(1.0f+abs(pow(numbers.get(b),4.0f))),(float)1.0f/(float)(numbers.size()*13));
 				// ((Vector<SinOsc>)Oscs.get(b)).get(5).play(110*(1.0f+abs(pow(numbers.get(b),0.5f))),(float)1.0f/(float)(numbers.size()*10));
@@ -155,6 +155,11 @@ public class UI_Main extends PApplet {
 				// ((Vector<SinOsc>)Oscs.get(b)).get(7).play(110*(1.0f+abs(pow(numbers.get(b),0.25f))),(float)1.0f/(float)(numbers.size()*13));
 				// interpreter.objects.get(b).shape = createShape();
 			}
+			reverb.damp(1.0f/(numbers.size()+1.0f));
+			reverb.room(1.0f/(numbers.size()+1.0f));
+			reverb.wet(1.0f/(numbers.size()+1.0f));
+			delay.time(time*1.5f/(numbers.size()+1.0f));
+			delay.feedback(0.5f/(numbers.size()+1.0f));
 			done = true;
 		}
 		
@@ -273,30 +278,14 @@ public class UI_Main extends PApplet {
 						&& (note.get(i).intValue() <= interpreter.instruments.get(i).sequence.size())) {
 
 					// Create the new trigger according to predefined duration
-					if(step>=interpreter.instruments.get(i).sequence.size()||note.get(i).intValue() >= interpreter.instruments.get(i).sequence.size()) {
-						step=1;
+					if(note.get(i).intValue() >= interpreter.instruments.get(i).sequence.size()) {
 						note.set(i,1);
-						reverb.stop();
-						delay.stop();
-						delay.process(Oscs.get(i).get(0));
-						delay.process(Oscs.get(i).get(1));
-						delay.process(Oscs.get(i).get(2));
-						delay.process(Oscs.get(i).get(3));
-						reverb.process(Oscs.get(i).get(0));
-						reverb.process(Oscs.get(i).get(1));
-						reverb.process(Oscs.get(i).get(2));
-						reverb.process(Oscs.get(i).get(3));
-						reverb.damp(1.0f/(numbers.size()+1.0f));
-						reverb.room(1.0f/(numbers.size()+1.0f));
-						reverb.wet(1.0f/(numbers.size()+1.0f));
-						delay.time(1.0f/(numbers.size()+1.0f));
-						delay.feedback(1.0f/(numbers.size()+1.0f));
+						
 					}
-					float noteFreq =(Math.abs((float)interpreter.instruments.get(i).sequence.get((int)step)));
+					float noteFreq =(Math.abs((float)interpreter.instruments.get(i).sequence.get(note.get(i).intValue())));
 					
-					if (Math.abs(noteFreq)>=(134279985.0f/2048.0f) ||Math.abs(noteFreq)<=1.0f){
-						noteFreq=Math.abs((float)Math.pow(134280798.0f/256.0f,Math.abs(16.0f/(16.0f*Math.abs(numbers.get(i)+16.0f)))));
-						noteFreq=noteFreq*110.0f;
+					if (Math.abs(noteFreq)>=(134280798.0f/4096.0f) ||Math.abs(noteFreq)<=6.0f){
+						noteFreq=Math.abs((float)Math.pow(134280798.0f,Math.abs(16.0f/(16.0f*Math.abs(numbers.get(i))+16.0f))));
 					}
 					System.out.println(noteFreq);
 					interpreter.instruments.get(i).trigger = (float) millis() + (1000.0f * time);
@@ -308,10 +297,10 @@ public class UI_Main extends PApplet {
 					Oscs.get(i).get(2).stop();
 					Oscs.get(i).get(3).stop();*/
 					
-					Oscs.get(i).get(0).set((float)((noteFreq)), ((float) 1.0f / (float) (numbers.size()*15.0f)),0,0);
-					Oscs.get(i).get(1).set((float)((noteFreq/numbers.get(i))), ((float) 1.0f / (float) (numbers.size()*20.0f)),0,0);
-					Oscs.get(i).get(2).set((float)((noteFreq)/numbers.get(i))/numbers.get(i),((float) 1.0f / (float) (numbers.size()*25.0f)),0,0);
-					Oscs.get(i).get(3).set((float)(((noteFreq)/numbers.get(i))/numbers.get(i))/numbers.get(i),((float) 1.0f / (float) (numbers.size()*30.0f)),0,0);
+					Oscs.get(i).get(0).set((float)((noteFreq)), ((float) 0.16666f / (float) (numbers.size()*15.0f)),0,0);
+					Oscs.get(i).get(1).set((float)((noteFreq/numbers.get(i))), ((float) 0.16666f / (float) (numbers.size()*20.0f)),0,0);
+					Oscs.get(i).get(2).set((float)((noteFreq)/numbers.get(i))/numbers.get(i),((float) 0.16666f / (float) (numbers.size()*25.0f)),0,0);
+					Oscs.get(i).get(3).set((float)(((noteFreq)/numbers.get(i))/numbers.get(i))/numbers.get(i),((float) 0.16666f / (float) (numbers.size()*30.0f)),0,0);
 					// ((Vector<SinOsc>)Oscs.get(i)).get(3).set(noteFreq/(abs(pow(numbers.get(i),2.0f))),(float)1.0f/(float)(numbers.size()*11),0,0);
 					// ((Vector<SinOsc>)Oscs.get(i)).get(4).set(noteFreq/(abs(pow(numbers.get(i),4.0f))),(float)1.0f/(float)(numbers.size()*11.5),0,0);
 					// ((Vector<SinOsc>)Oscs.get(i)).get(5).set(noteFreq/(1.0f+abs(pow(numbers.get(i),5.0f))),(float)1.0f/(float)(numbers.size()*11.75f),0,0);
@@ -333,7 +322,6 @@ public class UI_Main extends PApplet {
 					 * interpreter.objects.get(i).mode = rand.nextInt(8); duration = (int)
 					 * (10000.0f+ 10000.0f* rand.nextFloat()); }
 					 */
-					step=step+1;
 					note.set(i, note.get(i)+1);
 					if (note.get(i).intValue() > (interpreter.instruments.get(i).sequence.size())) {
 						for (int b = 0; b < numbers.size(); b++) {

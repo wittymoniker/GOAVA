@@ -12,7 +12,7 @@ public class MusicGenerator {
 	public void playMusic(Vector<Float> numbers) {
 		Random rand = new Random();
 		Composer comp = new Composer();
-		interval = 16*16*16*16*numbers.size();
+		interval = 16*numbers.size();
 		/*if (rand.nextInt(2) == 1) {
 			interval = 1.0f - ((1.0f / (((Math.abs(((((((numberAssigned))))))))) + 1.0f)));
 		}*/
@@ -20,7 +20,7 @@ public class MusicGenerator {
 			float f = (float) (numbers.size()+1.0f) * interval;
 			sequence = new Vector<Float>((int) f);
 			for (int i = 0; i < f; i++) {
-				sequence.add(i, (comp.getNote(numberAssigned,i,numbers) * (55.0f)));
+				sequence.add(i, (comp.getNote(numberAssigned,i,numbers) * (16.0000f)));
 				if (sequence.get(i) == null) {
 					System.out.println("\n" + sequence.get(i));
 				}
@@ -32,7 +32,7 @@ public class MusicGenerator {
 			float f = (float) numbers.size() * interval;
 			sequence = new Vector<Float>((int) f);
 			for (int i = 0; i < f; i++) {
-				float c =((220.0f) / numberAssigned);
+				float c =((16.0f) / numberAssigned);
 				sequence.add(i,  (float) Math.pow(numberAssigned,comp.getNote(numberAssigned,i,numbers)));
 				if (sequence.get(i) == null) {
 					System.out.println("\n" + sequence.get(i));
@@ -44,7 +44,7 @@ public class MusicGenerator {
 			sequence = new Vector<Float>((int) f);
 			for (int i = 0; i < f; i++) {
 				float c = numbers.get(((int) ((rand.nextInt(numbers.size())))))
-						* ((float) 110.0f * comp.getNote(numberAssigned,i,numbers));
+						* ((float) 16.0f * comp.getNote(numberAssigned,i,numbers));
 				sequence.add(i, (float) c);
 				if (sequence.get(i) == null) {
 					System.out.println("\n" + sequence.get(i));
@@ -55,7 +55,7 @@ public class MusicGenerator {
 			float f = (float) numbers.size() * interval;
 			sequence = new Vector<Float>((int) f);
 			for (int i = 0; i < f; i++) {
-				float c = comp.getNote(numberAssigned,i,numbers) * (55.0f);
+				float c = comp.getNote(numberAssigned,i,numbers) * (16.0000f);
 				sequence.add(i, (float) c);
 				if (sequence.get(i) == null) {
 					System.out.println("\n" + sequence.get(i));
@@ -66,7 +66,7 @@ public class MusicGenerator {
 			float f = (float) numbers.size() * interval;
 			sequence = new Vector<Float>((int) f);
 			for (int i = 0; i < f; i++) {
-				float c = comp.getNote(numberAssigned,i,numbers) * ((55.0f) / numberAssigned);
+				float c = comp.getNote(numberAssigned,i,numbers) * ((16.0000f) / numberAssigned);
 				sequence.add(i, (float) Math.pow(c, numberAssigned));
 				if (sequence.get(i) == null) {
 					System.out.println("\n" + sequence.get(i));
@@ -77,7 +77,7 @@ public class MusicGenerator {
 			float f = (float) numbers.size() * interval;
 			sequence = new Vector<Float>((int) f);
 			for (int i = 0; i < f; i++) {
-				sequence.add(i, comp.getNote(numberAssigned,i,numbers) * (55.0f));
+				sequence.add(i, comp.getNote(numberAssigned,i,numbers) * (16.0000f));
 				if (sequence.get(i) == null) {
 					System.out.println("\n" + sequence.get(i));
 				}
@@ -89,7 +89,7 @@ public class MusicGenerator {
 			sequence = new Vector<Float>((int) f);
 			for (int i = 0; i < f; i++) {
 				float c = (numbers.get((int) ((rand.nextInt(numbers.size())))))
-						*comp.getNote(numberAssigned,i,numbers) * (6.125f * numberAssigned);
+						*comp.getNote(numberAssigned,i,numbers) * (16.0f * numberAssigned);
 				sequence.add(i, (float) Math.pow(c, comp.getNote(numberAssigned,i,numbers)));
 				if (sequence.get(i) == null) {
 					System.out.println("\n" + sequence.get(i));
@@ -103,7 +103,7 @@ public class MusicGenerator {
 				float c = (numbers.get((int) ((rand.nextInt(numbers.size()))))
 						* numbers.get((int) ((rand.nextInt(numbers.size()))))
 						* comp.getNote(numberAssigned,i,numbers))
-						* (27.5000f / numberAssigned);
+						* (16.0000f / numberAssigned);
 				sequence.add(i, (float) Math.pow(c, numberAssigned));
 				if (sequence.get(i) == null) {
 					System.out.println("\n" + sequence.get(i));
@@ -117,7 +117,7 @@ public class MusicGenerator {
 				sequence.add(i, numbers.get((int) ((rand.nextInt(numbers.size()))))
 						+ (numbers.get((int) ((rand.nextInt(numbers.size()))))
 								* numbers.get((int) ((rand.nextInt(numbers.size()))))
-								* comp.getNote(numberAssigned,i,numbers)) * (55.0f));
+								* comp.getNote(numberAssigned,i,numbers)) * (16.0000f));
 				if (sequence.get(i) == null) {
 					System.out.println("\n" + sequence.get(i));
 				}
@@ -129,7 +129,7 @@ public class MusicGenerator {
 			sequence = new Vector<Float>((int) f);
 			for (int i = 0; i < f; i++) {
 				sequence.add(i, comp.getNote(numberAssigned,i,numbers)
-						*  (55.0f));
+						*  (16.0000f));
 				if (sequence.get(i) == null) {
 					System.out.println("\n" + sequence.get(i));
 				}
@@ -142,7 +142,7 @@ public class MusicGenerator {
 			sequence = new Vector<Float>((int) f);
 			for (int i = 0; i < f; i++) {
 				float c = comp.getNote(numberAssigned,i,numbers)
-						* (110.0f / numberAssigned);
+						* (16.0f / numberAssigned);
 				sequence.add(i, (float) Math.pow(c, numberAssigned));
 				if (sequence.get(i) == null) {
 					System.out.println("\n" + sequence.get(i));
@@ -154,7 +154,7 @@ public class MusicGenerator {
 			sequence = new Vector<Float>((int) f);
 			for (int i = 0; i < f; i++) {
 				float c =comp.getNote(numberAssigned,i,numbers)
-						* ((float) 110.0f / numberAssigned);
+						* ((float) 16.0f / numberAssigned);
 				sequence.add(i, (float) c);
 				if (sequence.get(i) == null) {
 					System.out.println("\n" + sequence.get(i));
@@ -165,7 +165,7 @@ public class MusicGenerator {
 			float f = (float) numbers.size() * interval;
 			sequence = new Vector<Float>((int) f);
 			for (int i = 0; i < f; i++) {
-				float c =comp.getNote(numberAssigned,i,numbers) * (880.0f);
+				float c =comp.getNote(numberAssigned,i,numbers) * (16.0000f);
 				sequence.add(i, (float) c);
 				if (sequence.get(i) == null) {
 					System.out.println("\n" + sequence.get(i));
@@ -177,7 +177,7 @@ public class MusicGenerator {
 			sequence = new Vector<Float>((int) f);
 			for (int i = 0; i < f; i++) {
 				float c = comp.getNote(numberAssigned,i,numbers)
-						* (6.1250f / numberAssigned);
+						* (16.00f / numberAssigned);
 				sequence.add(i, (float) Math.pow(c, numbers.get(rand.nextInt(numbers.size()))));
 				if (sequence.get(i) == null) {
 					System.out.println("\n" + sequence.get(i));
@@ -188,7 +188,7 @@ public class MusicGenerator {
 			float f = (float) numbers.size() * interval;
 			sequence = new Vector<Float>((int) f);
 			for (int i = 0; i < f; i++) {
-				sequence.add(i, comp.getNote(numberAssigned,i,numbers) * (55.0f));
+				sequence.add(i, comp.getNote(numberAssigned,i,numbers) * (16.0000f));
 				if (sequence.get(i) == null) {
 					System.out.println("\n" + sequence.get(i));
 				}
@@ -199,7 +199,7 @@ public class MusicGenerator {
 			float f = (float) numbers.size() * interval;
 			sequence = new Vector<Float>((int) f);
 			for (int i = 0; i < f; i++) {
-				float c = comp.getNote(numberAssigned,i,numbers) * ((6.125f/(8.0f*(float)numbers.size())));
+				float c = comp.getNote(numberAssigned,i,numbers) * ((16.0f/(8.0f*(float)numbers.size())));
 				sequence.add(i, (float) Math.pow(numberAssigned, comp.getNote(numberAssigned,i,numbers)));
 				if (sequence.get(i) == null) {
 					System.out.println("\n" + sequence.get(i));
@@ -211,7 +211,7 @@ public class MusicGenerator {
 			sequence = new Vector<Float>((int) f);
 			for (int i = 0; i < f; i++) {
 				float c = (numbers.get((int) ((rand.nextInt(numbers.size()))))
-						* comp.getNote(numberAssigned,i,numbers)) * ((6.125f/(8.0f*(float)numbers.size())));
+						* comp.getNote(numberAssigned,i,numbers)) * ((16.0f/(8.0f*(float)numbers.size())));
 				sequence.add(i, (float) Math.pow(comp.getNote(numberAssigned,i,numbers), c));
 				if (sequence.get(i) == null) {
 					System.out.println("\n" + sequence.get(i));
@@ -223,7 +223,7 @@ public class MusicGenerator {
 			sequence = new Vector<Float>((int) f);
 			for (int i = 0; i < f; i++) {
 				float c = (numbers.get((int) ((rand.nextInt(numbers.size()))))*numbers.get((int) ((rand.nextInt(numbers.size()))))
-						* comp.getNote(numberAssigned,i,numbers)) * ((6.125f/(8.0f*(float)numbers.size())));
+						* comp.getNote(numberAssigned,i,numbers)) * ((16.0f/(8.0f*(float)numbers.size())));
 				sequence.add(i, (float) Math.pow(comp.getNote(numberAssigned,i,numbers), c));
 				if (sequence.get(i) == null) {
 					System.out.println("\n" + sequence.get(i));
