@@ -121,136 +121,113 @@ if ($posttype == "message"){
 
 
 
-        $sql= "INSERT INTO accounts (username, messages, votes, files, friends) 
-        VALUES ('$posttarget', '$postinfo', '$postrecipients', '$postmedia', '$postauthor') WHERE username == '$posttarget'";
-     $i=$i+1;
-       
-          $con->query($sql);if(1==1){
-            echo "New record INSERT INTOd successfully";
-          } else {
-            echo "Error: " . $sql . "<br>" . $con->error;
-          }
-          
+        $stmt= $con->prepare( $con->prepare("INSERT INTO accounts(username, messages, votes, files, friends, username)  VALUES 
+        (?,?,?,?,?,?)"));
+        
+	$stmt->bind_param('ssssss', '$posttarget', '$postinfo', '$postrecipients', '$postmedia', '$postauthor','$posttarget');
+  $stmt->execute(); 
+  $stmt->fetch();
+          $i=$i+1;
     }
 
   
 
-    $sql=("INSERT INTO accounts(messages, id)  VALUES ($postcontent) WHERE id == '$id' " );
-   
-    $con->query($sql);if(1==1){         echo "New record INSERT INTOd successfully";
-       } else {
-         echo "Error: " . $sql . "<br>" . $con->error;
-       }
+    $stmt= $con->prepare(("INSERT INTO accounts(id, messages)  VALUES (?,?)" ));
+    $stmt->bind_param('is', '$id','$postcontent');
+   $stmt->execute(); 
+    
+    
      
  
    $i=0;
-   $stmt->close();
-   $con->close();
+
     echo '.';
-    $con->free();
+      
     
 }
   
 if ($posttype == "media"){
     $i=0;
     foreach  ($posttaglets as &$posttaglet){
-        $sql= "INSERT INTO forums (tag, about, groups, posts, events) 
-        VALUES ($posttaglet, $posttags, $postrecipients, $postinfo, $postrecipients) WHERE tag == '$posttaglet'";
-        
+        $stmt= $con->prepare( "INSERT INTO forums (tag, about, groups, posts, events) 
+        VALUES (?,?,?,?,?) ");
+         
+        $stmt->bind_param('sssss','$posttaglet', '$posttags', '$postrecipients', '$postinfo', '$postrecipients');
+        $stmt->execute(); 
      $i=$i+1;
-     $con->query($sql);if(1==1){            echo "New record INSERT INTOd successfully";
-          } else {
-            echo "Error: " . $sql . "<br>" . $con->error;
-          }
+    
     }
    
   
     $i=0;
-    $sql= "INSERT INTO posts (content, title,  file, tags, name, dt, scope, type, recipients) VALUES ($postcontent, $posttitle, $postmedia, $posttags, $postauthor, $posttime, $postscope, $posttype, $postrecipients) WHERE (title,posts(file)) == ('$posttitle', '$postmedia')'";
-
-    $con->query($sql);if(1==1){        echo "New record INSERT INTOd successfully";
-      } else {
-        echo "Error: " . $sql . "<br>" . $con->error;
-      }
-    $con->close();
+    $stmt= $con->prepare( "INSERT INTO posts (content,    tags,  dt, scope, type, recipients,name, title, file) VALUES (?,?,?,?) ");
+         
+        $stmt->bind_param('sssssssss','$postcontent',  '$posttags', '$posttime', '$postscope', '$posttype', '$postrecipients', '$uname', '$posttitle', '$postmedia' );
+        $stmt->execute(); 
+ 
      echo '.';
-    $con->free();
+      
 }
 if ($posttype == "comment"){
   $i=0;
   foreach  ($posttargets as &$posttarget){
-      $sql= "INSERT INTO posts (comments) WHERE  posts(title, name) =($posttitle, $posttarget) 
-      VALUES ($postinfo)";
- 
+      $stmt= $con->prepare( "INSERT INTO posts (comments, title, name) ) 
+      VALUES (?,?,?)");
+
+ $stmt->bind_param('sss',  '$postinfo','$posttitle', '$posttarget');
+        $stmt->execute(); 
    $i=$i+1;
-   $con->query($sql);if(1==1){          
-    echo "New record INSERT INTOd successfully";
-        } else {
-          echo "Error: " . $sql . "<br>" . $con->error;
-        }
+
+     
   }
  
   $i=0;
-  $sql= "INSERT INTO accounts(posts,id)   VALUES ($postcontent) WHERE id ==' $id '";
-  
+  $stmt= $con->prepare( "INSERT INTO accounts(posts,id)  VALUES (?,?)");
 
-  $con->query($sql);if(1==1){          echo "New record INSERT INTOd successfully";
-        } else {
-          echo "Error: " . $sql . "<br>" . $con->error;
-        }
+ $stmt->bind_param('si',  '$postcontent','$id');
+        $stmt->execute(); 
       
         
-    $con->close();
+
      echo '.';
-    $con->free();
+      
 
 }
 if ($posttype == "post"){
 
-    $sql= "INSERT INTO posts (content, title,  file, tags, name, dt, scope, type, recipients) VALUES ($postcontent, $posttitle, $postmedia, $posttags, $postauthor, $posttime, $postscope, $posttype, $postrecipients) WHERE (name, file) = ('$uname', '$postfile')";
-    
-    $con->query($sql);if(1==1){
-              echo "New record INSERT INTOd successfully";
-      } else {
-        echo "Error: " . $sql . "<br>" . $con->error;
-      }
-  
+    $stmt= $con->prepare( "INSERT INTO posts (content, title,   tags, dt, scope, type, recipients, name, file) VALUES (?,?,?,?,?,?,?,?,?) ");
+    $stmt->bind_param('sssssssss','$postcontent', '$posttitle', '$posttags', '$posttime', '$postscope', '$posttype', '$postrecipients', '$uname', '$posttitle', '$postmedia' );
+        $stmt->execute(); 
+      
  
     $i=0;
     foreach  ($posttaglets as &$posttaglet){
 
-        $sql= "INSERT INTO tags (posts, groups, events, forums) 
-        VALUES ($postinfo, $postrecipients, $postrecipients, $posttags) WHERE tags(value) == '$posttaglet'";
-  
+        $stmt= $con->prepare( "INSERT INTO tags (posts, groups, events, forums, value); 
+
+        VALUES (?,?,?,?,?) ");
+  $stmt->bind_param('sssssssss','$postcontent', '$posttitle', '$posttags', '$posttime', '$postscope', '$posttype', '$postrecipients', '$uname', '$posttitle', '$postmedia' );
+  $stmt->execute(); 
      $i=$i+1;
-     $con->query($sql);if(1==1){
-                  echo "New record INSERT INTOd successfully";
-          } else {
-            echo "Error: " . $sql . "<br>" . $con->error;
-          }
+    }
     }
   
     $i=0;
     
-    $con->close();
+
      echo '.';
-    $con->free();
+      
 } 
     if ($posttype == "profile"){
 
-      $sql= "INSERT INTO accounts (aboutcontent) 
-          VALUE ($postinfo) WHERE  accounts(id, username) == ('$id', '$uname') ";
+      $stmt= $con->prepare( "INSERT INTO accounts (aboutcontent, id, username) 
+          VALUES (?,?,?)");
 
-    
-$con->query($sql);if(1==1){
-            echo "New record INSERT INTOd successfully";
-        } else {
-          echo "Error: " . $sql . "<br>" . $con->error;
-        }
-        
-    $con->close();
+ $stmt->bind_param('sis',  '$postinfo','$id', '$uname');
+        $stmt->execute(); 
+
      echo '.';
-    $con->free();
+      
 
 
 
@@ -259,97 +236,74 @@ $con->query($sql);if(1==1){
 if ($posttype == "event"){
 
 
-    $sql= "INSERT INTO events (title, type, about, groups, members, posts, tags) 
-    VALUES ($posttitle, $posttype, $postcontent, $postrecipients, $postauthor, $postinfo, $posttags) WHERE (title) == ('$posttitle')";
-
-$con->query($sql);if(1==1){
-          echo "New record INSERT INTOd successfully";
-      } else {
-        echo "Error: " . $sql . "<br>" . $con->error;
-      }
-  
+    $stmt= $con->prepare( "INSERT INTO events (title, type, about, groups,  posts, tags, title, members, file) 
+    VALUES (?,?,?,?,?,?,?,?,?) ");
+$stmt->bind_param('sssssssss', '$posttitle', '$posttype','$postinfo', '$postrecipients', '$postcontent', '$posttags', '$posttitle', '$uname', '$postmedia' );
+    $stmt->execute(); 
 
 
-      $sql= "INSERT INTO posts (content, title,  file, tags, name, dt, scope, type, recipients) VALUES ($postcontent, $posttitle, $postmedia, $posttags, $postauthor, $posttime, $postscope, $posttype, $postrecipients) WHERE (name, id, file) == ('$uname', '$id', '$postmedia')";
-
-      $con->query($sql);if(1==1){
-                  echo "New record INSERT INTOd successfully";
-        } else {
-          echo "Error: " . $sql . "<br>" . $con->error;
-        }
-      
+$stmt= $con->prepare( "INSERT INTO posts (content, title,   tags, dt, scope, type, recipients, name, file) VALUES (?,?,?,?,?,?,?,?,?) ");
+$stmt->bind_param('sssssssss','$postcontent', '$posttitle', '$posttags', '$posttime', '$postscope', '$posttype', '$postrecipients', '$uname', '$posttitle', '$postmedia' );
+    $stmt->execute(); 
    
-    $con->close();
+   
      echo '.';
-    $con->free();
+      
 
 }
 if ($posttype == "group"){
 
 
-    $sql= "INSERT INTO groups (title, about, members, posts, tags, forums, tags) 
-    VALUES ($posttitle, $posttype, $postauthor, $postinfo, $postrecipients, $posttags, $posttags) WHERE (title) == ('$posttitle')";
+  $stmt= $con->prepare( "INSERT INTO groups (title, type, about, events,  posts, tags, title, members, file) 
+  VALUES (?,?,?,?,?,?,?,?,?) ");
+$stmt->bind_param('sssssssss', '$posttitle', '$posttype','$postinfo', '$postrecipients', '$postcontent', '$posttags', '$posttitle', '$uname', '$postmedia' );
+  $stmt->execute(); 
 
-$con->query($sql);if(1==1){
-          echo "New record INSERT INTOd successfully";
-      } else {
-        echo "Error: " . $sql . "<br>" . $con->error;
-      }
-    
- 
 
-      $sql= "INSERT INTO posts (content, title,  file, tags, name, dt, scope, type, recipients) VALUES ($postcontent, $posttitle, $postmedia, $posttags, $postauthor, $posttime, $postscope, $posttype, $postrecipients) WHERE (name, id) == ('$uname', '$id')";
+$stmt= $con->prepare( "INSERT INTO posts (content, title,   tags, dt, scope, type, recipients, name, file) VALUES (?,?,?,?,?,?,?,?,?) ");
+$stmt->bind_param('sssssssss','$postcontent', '$posttitle', '$posttags', '$posttime', '$postscope', '$posttype', '$postrecipients', '$uname', '$posttitle', '$postmedia' );
+  $stmt->execute(); 
  
-      $con->query($sql);if(1==1){
-                  echo "New record INSERT INTOd successfully";
-        } else {
-          echo "Error: " . $sql . "<br>" . $con->error;
-        }
+   echo '.';
     
-    
-    $con->close();
-     echo '.';
-    $con->free();
+
+      
 }
 if ($posttype == "forum"){
     $i=0;
     foreach ($posttaglets as &$posttaglet){
-        $sql= "INSERT INTO forums (tag, about, groups, posts, events) 
-        VALUES ($posttaglets, $posttags, $postrecipients, $postinfo, $postrecipients) WHERE tag == '$posttaglet'";
+        $stmt= $con->prepare( "INSERT INTO forums (about, groups, posts, events, tag) 
+        VALUES (?,?,?,?,?)");
 
      $i=$i+1;
-     $con->query($sql);if(1==1){
-                  echo "New record INSERT INTOd successfully";
-          } else {
-            echo "Error: " . $sql . "<br>" . $con->error;
-          }
+     $stmt->bind_param('sssss','$posttags', '$postrecipients', '$postinfo', '$postrecipients','$posttaglet');
+      $stmt->execute(); 
+       
     }
-  }
+
 
     $i=0;
 
-    $sql= "INSERT INTO posts (content, title,  file, tags, name, dt, scope, type, recipients) VALUES ($postcontent, $posttitle, $postmedia, $posttags, $postauthor, $posttime, $postscope, $posttype, $postrecipients) WHERE (name, id, file) == ('$uname', '$id', '$postmedia')";
+    $stmt= $con->prepare( "INSERT INTO posts (content, title,   tags, dt, scope, type, recipients, name, file) VALUES (?,?,?,?,?,?,?,?,?) ");
+    $stmt->bind_param('sssssssss','$postcontent', '$posttitle', '$posttags', '$posttime', '$postscope', '$posttype', '$postrecipients', '$uname', '$posttitle', '$postmedia' );
+      $stmt->execute(); 
+     
+      $con->close();
 
-    $con->query($sql);if(1==1){
-        echo "New record INSERT INTOd successfully";
-      } else {
-        echo "Error: " . $sql . "<br>" . $con->error;
-      }
-    
+
+      
     }
 
    
 
-$sql= "INSERT INTO accounts(groups, events, files, forums, friends,  messages, posts, tags, votes)  
-VALUES ($postinfo, $postinfo, $postmedia, $posttags, $postrecipients, $postinfo, $postinfo, $postinfo, $postinfo) WHERE accounts(username, id) == ($postauthor, $authorid)";  ;
+$stmt= $con->prepare( "INSERT INTO accounts(groups, events, files, forums, friends,  messages, posts, tags, username, id)  
+VALUES (?,?,?,?,?,?,?,?,?,?)");
+$stmt->bind_param('sssssssssi', '$posttitle', '$posttitle',  '$postmedia', '$posttags', '$postrecipients', '$postinfo','$postinfo', '$posttags', '$uname', '$id');  
+ $stmt->execute(); 
 
-$con->query($sql);if(1==1){      echo "New record INSERT INTOd successfully";
-    } else {
-      echo "Error: " . $sql . "<br>" . $con->error;
-    }
-    $con->close();
+
      echo '.';
-    $con->free();
+      
 
 
 
@@ -371,7 +325,7 @@ echo "<a href='home.php'>Return to home</a>";
                                 </font>
                             </p>";
                 }
-              }
+}
       
 ?>
 
